@@ -1,9 +1,15 @@
 using Godot;
+using GodotPlugins.Game;
 using Shared.Characters;
 using System;
+using System.Collections.Generic;
 
 public partial class GameMenu : Control
 {
+
+	public enum AllWindows { Main, Settings, CharacterCreate}
+	public AllWindows CurrentOpenWindow = AllWindows.Main;
+	private Dictionary<AllWindows, Control> _windowToPanel;
 	
 	[Export] private Button _openCreateMenu;
 	[Export] private CharacterCreateWindow _createMenu;
@@ -11,28 +17,73 @@ public partial class GameMenu : Control
 	[Export] private Label _userId;
 	[Export] private Label _username;
 	[Export] private StatusWindow _statusWindow;
-	[Export] private TextureButton _settingButton;
-	[Export] private Control _settingWindow;
+	[Export] private SettingButton _settingButton;
+	[Export] private SettingWindow _settingWindow;
+	[Export] private TextureButton _heroInfoButton;
+	private bool _isHeroPanelOpen = false;
 	
 	// CHARACTER WINDOW
 
 	public override void _Ready()
 	{
-		
-		_openCreateMenu.Pressed += () =>
+
+
+		_windowToPanel = new Dictionary<AllWindows, Control>()
 		{
-			_createMenu.ChangeVisiblity();
+			{AllWindows.Settings, _settingWindow},
+			{AllWindows.CharacterCreate, _createMenu}
 		};
+
+		
+
+		foreach (var win in _windowToPanel.Values)
+		{
+			win.Visible = false;
+		}
 
 		_userId.Text = GameSession.Instance.GlobalId.ToString();
 		_username.Text = GameSession.Instance.Username;
 
+		
+		_openCreateMenu.Pressed += () =>
+		{
+			_createMenu.OpenWindow();
+			CurrentOpenWindow = AllWindows.CharacterCreate;
+		};
+
 		_settingButton.Pressed += () =>
 		{
-			_settingWindow.Visible = true;
+
+			if (CurrentOpenWindow == AllWindows.Settings)
+			{
+				_settingButton.RotateOnClose();
+				_ = _settingWindow.CloseWindow();
+				CurrentOpenWindow = AllWindows.Main;
+			}
+			else
+			{
+				
+				_settingWindow.OpenWindow();
+				_settingButton.RotateOnOpen();
+				CurrentOpenWindow = AllWindows.Settings;
+
+			}
 		};
 
 
+
+		_heroInfoButton.Pressed += () =>
+		{
+			_isHeroPanelOpen = !_isHeroPanelOpen;
+			_characterInfoPanel.Visible = _isHeroPanelOpen;
+		};
+
+
+		_settingWindow.OnWindowClose += () =>
+		{
+			CurrentOpenWindow = AllWindows.Main;
+			_settingButton.RotateOnClose();
+		};
 		_createMenu.OnCreateCharacter += CreateCharacterRequestAsync;
 
 	}
@@ -45,7 +96,18 @@ public partial class GameMenu : Control
 			Visible = !Visible;
 
 		}
+		if (@event.IsActionPressed("MENU_CloseAll"))
+		{
+			foreach(var win in _windowToPanel.Values)
+			{
+				win.Visible = false;
+			}
+		}
 	}
+
+
+
+	#region HTTP / INTERNET 
 
 	private async void CreateCharacterRequestAsync(string name, EntityType entityId)
 	{
@@ -66,6 +128,8 @@ public partial class GameMenu : Control
 		}
 
 	}
+
+	#endregion
 
 
 

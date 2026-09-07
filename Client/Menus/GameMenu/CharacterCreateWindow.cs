@@ -6,6 +6,7 @@ public partial class CharacterCreateWindow : PanelContainer
 {
 
 	public event Action<string, EntityType> OnCreateCharacter;
+	public event Action OnWindowClose;
 	
 	[Export] private Button _backButton;
 	[Export] private Button _createCharacter;
@@ -21,7 +22,7 @@ public partial class CharacterCreateWindow : PanelContainer
 		_backButton.Pressed += () =>
 		{
 			_nickname.Text = "";
-			ChangeVisiblity();
+			CloseWindow();
 		};
 
 		_createCharacter.Pressed += CreateCharacter;
@@ -29,10 +30,22 @@ public partial class CharacterCreateWindow : PanelContainer
 	}
 
 
-	public void ChangeVisiblity()
+	public void OpenWindow()
 	{
 		
-		Visible = !Visible;
+		Visible = true;
+		var tween = CreateTween()
+			.TweenProperty(this, "modulate:a", 0.0f, 0.75f);
+
+	}
+	public void CloseWindow()
+	{
+		
+		var tween = CreateTween()
+			.TweenProperty(this, "modulate:a", 0.0f, 1f);
+
+		tween.Finished += () => {Visible = false; OnWindowClose?.Invoke();};
+
 
 	}
 

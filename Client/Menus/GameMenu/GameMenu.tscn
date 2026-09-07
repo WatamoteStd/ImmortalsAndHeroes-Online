@@ -3,11 +3,15 @@
 [ext_resource type="Script" uid="uid://bdnbyoilupi3c" path="res://Menus/GameMenu/GameMenu.cs" id="1_084tt"]
 [ext_resource type="FontFile" uid="uid://dv1oqiqtkvkcw" path="res://Assets/Fonts/Cinzel/Cinzel-VariableFont_wght.ttf" id="1_khm7e"]
 [ext_resource type="FontFile" uid="uid://4bigkfo8lm0n" path="res://Assets/Fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf" id="2_vv60x"]
+[ext_resource type="Script" uid="uid://jlsa0juq7pcf" path="res://Menus/GameMenu/SettingButton.cs" id="3_5yqie"]
 [ext_resource type="Script" uid="uid://dbis053we3ws0" path="res://Menus/GameMenu/CharacterCreateWindow.cs" id="3_cu48p"]
 [ext_resource type="FontFile" uid="uid://4idcqtrgxamb" path="res://Assets/Fonts/Cinzel_Decorative/CinzelDecorative-Black.ttf" id="3_jukw0"]
 [ext_resource type="Script" uid="uid://bmywisunlmscd" path="res://Menus/GameMenu/CharacterWindow.cs" id="3_lunjg"]
+[ext_resource type="Texture2D" uid="uid://vhdaeq3ocoo0" path="res://Assets/Icons/GameMenu/Arrow/Arrow.png" id="4_2502q"]
 [ext_resource type="PackedScene" uid="uid://bl8fdbktqdobx" path="res://Menus/MainMenu/status_window.tscn" id="4_qy3an"]
+[ext_resource type="Texture2D" uid="uid://c30phix53r7io" path="res://Assets/Icons/GameMenu/Arrow/ArrowPressed.png" id="5_84woy"]
 [ext_resource type="PackedScene" uid="uid://dh4k0xaqq5cot" path="res://Screens/MainMenu/MainScreen.tscn" id="6_1ym0r"]
+[ext_resource type="Texture2D" uid="uid://bch2t6plrxk3r" path="res://Assets/Icons/GameMenu/Arrow/ArrowHover.png" id="6_kh8cf"]
 [ext_resource type="PackedScene" uid="uid://by61a2l1ls2yr" path="res://Menus/GameMenu/Settings/SettingWindow.tscn" id="7_jukw0"]
 [ext_resource type="Texture2D" uid="uid://cgj2p5y21v5xq" path="res://Assets/Icons/GameMenu/SettingsIcon.png" id="8_7wkxe"]
 
@@ -4871,7 +4875,7 @@ shadow_size = 2
 
 [node name="Menu" type="CanvasLayer" unique_id=472970922]
 
-[node name="Control" type="Control" parent="." unique_id=1766940450 node_paths=PackedStringArray("_openCreateMenu", "_createMenu", "_characterInfoPanel", "_userId", "_username", "_statusWindow", "_settingButton", "_settingWindow")]
+[node name="Control" type="Control" parent="." unique_id=1766940450 node_paths=PackedStringArray("_openCreateMenu", "_createMenu", "_characterInfoPanel", "_userId", "_username", "_statusWindow", "_settingButton", "_settingWindow", "_heroInfoButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -4887,6 +4891,7 @@ _username = NodePath("Content/HBoxContainer/VBoxContainer/AccountPanel/Content/V
 _statusWindow = NodePath("StatusWindow")
 _settingButton = NodePath("Header/SettingButton")
 _settingWindow = NodePath("Content/SettingsWindow")
+_heroInfoButton = NodePath("Content/HBoxContainer/VBoxContainer/AccountPanel/Header/HeroStatsButton")
 
 [node name="Header" type="PanelContainer" parent="Control" unique_id=1910357882]
 custom_minimum_size = Vector2(0, 40)
@@ -4905,6 +4910,7 @@ size_flags_vertical = 8
 texture_normal = ExtResource("8_7wkxe")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("3_5yqie")
 
 [node name="Content" type="MarginContainer" parent="Control" unique_id=644977884]
 layout_mode = 1
@@ -4942,6 +4948,7 @@ texture = SubResource("GradientTexture2D_6u82b")
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_opg7x")
 
 [node name="bg" type="TextureRect" parent="Control/Content/HBoxContainer/VBoxContainer/AccountPanel/Header" unique_id=2103219756]
@@ -4957,8 +4964,20 @@ theme_override_fonts/font = SubResource("FontVariation_2502q")
 theme_override_font_sizes/font_size = 20
 text = "ACCOUNT PANEL"
 
+[node name="HeroStatsButton" type="TextureButton" parent="Control/Content/HBoxContainer/VBoxContainer/AccountPanel/Header" unique_id=515117910]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture_normal = ExtResource("4_2502q")
+texture_pressed = ExtResource("5_84woy")
+texture_hover = ExtResource("6_kh8cf")
+ignore_texture_size = true
+stretch_mode = 4
+
 [node name="Content" type="MarginContainer" parent="Control/Content/HBoxContainer/VBoxContainer/AccountPanel" unique_id=1996320327]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 4
@@ -5052,6 +5071,7 @@ theme_override_font_sizes/font_size = 13
 text = "No letters there"
 
 [node name="CharacterWindow" type="PanelContainer" parent="Control/Content/HBoxContainer/VBoxContainer" unique_id=1663994570 node_paths=PackedStringArray("_nickname", "_id", "_silver", "_characterCard", "_statusWindow", "_characterCreateButton", "_enterWorldButton")]
+visible = false
 custom_minimum_size = Vector2(550, 280)
 layout_mode = 2
 size_flags_horizontal = 8
