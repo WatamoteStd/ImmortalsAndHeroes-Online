@@ -4,15 +4,14 @@ using System;
 
 public partial class CharacterCreateWindow : PanelContainer
 {
+
+	public event Action<string, EntityType> OnCreateCharacter;
 	
 	[Export] private Button _backButton;
 	[Export] private Button _createCharacter;
 	[Export] private LineEdit _nickname;
-	[Export] private OptionButton _skillType;
+	[Export] private OptionButton _skinType;
 	
-	// WINDOWS
-	[Export] private StatusWindow _statusWindow;
-	[Export] private CharacterWindow _characterWindow;
 
 	public override void _Ready()
 	{
@@ -25,7 +24,7 @@ public partial class CharacterCreateWindow : PanelContainer
 			ChangeVisiblity();
 		};
 
-		_createCharacter.Pressed += CreateCharacterHttp;
+		_createCharacter.Pressed += CreateCharacter;
 
 	}
 
@@ -37,26 +36,12 @@ public partial class CharacterCreateWindow : PanelContainer
 
 	}
 
-	private async void CreateCharacterHttp()
+	private void CreateCharacter()
 	{
 		
 		_createCharacter.Disabled = true;
-		var response = await HttpsMasterClient.Instanсe.CreateCharacterAsync(_nickname.Text, (EntityType)_skillType.GetSelectedId());
+		OnCreateCharacter?.Invoke(_nickname.Text, (EntityType)_skinType.GetSelectedId());
 
-		if (response.isSucces == true && response.character != null)
-		{
-			
-			_statusWindow.ShowMessage("Success!", "Character created!");
-			_characterWindow.UpdateChracter(response.character.Nickname, response.character.Id.ToString(), response.character.Silver.ToString());
-			
-
-		}
-		else 
-		{
-			_statusWindow.ShowMessage("Failure!", response.message);
-		}
-
-		_createCharacter.Disabled = false;
 
 	}
 
