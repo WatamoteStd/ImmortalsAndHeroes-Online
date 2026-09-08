@@ -114,6 +114,23 @@ public class AdminConsoleController
                         }
 
                     }
+                    else if (subCmd == "silver")
+                    {
+                        
+                        if (int.TryParse(parts[2], out int silverCount))
+                        {
+                            player.ChangeSilver(silverCount);
+                            Console.WriteLine($"[AdminPanel] Player:{player.Name} add:{silverCount}. Total silver:{player.Silver}");
+
+                            var pkt = new C2S_AdminConsoleCommandPacket
+                            {
+                                Payload = $"[Server] Player:{player.Name} add:{silverCount}. Total silver:{player.Silver}"
+                            };
+
+                            _broadcaster.SendToPlayer<C2S_AdminConsoleCommandPacket>(player.PlayerId, PacketTypes.C2S_AdminConsoleCommand, pkt);
+                        }
+
+                    }
 
                 }
             break;

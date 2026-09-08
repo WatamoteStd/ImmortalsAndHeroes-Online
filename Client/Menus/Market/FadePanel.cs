@@ -5,6 +5,20 @@ public partial class FadePanel : PanelContainer
 {
 	
 	private Tween _tween;
+	[Export] private Label _silverCount;
+
+    public override void _Ready()
+    {
+        GameSession.Instance.OnPlayerDataUpdated += UpdateSilver;
+    }
+
+
+
+	public void UpdateSilver()
+	{
+		_silverCount.Text = GameSession.Instance.PlayerCache.Silver.ToString();
+	}
+
 
 	public void ShowSmooth()
 	{

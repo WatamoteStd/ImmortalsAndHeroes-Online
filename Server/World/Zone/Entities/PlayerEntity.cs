@@ -21,6 +21,7 @@ public class PlayerEntity : LivingEntity
 
     public event Action<ushort, ItemType, ushort>? OnInventoryChanged;
     public event Action<int, int>? OnExpChanged; // this newExp totalExp
+    public event Action<int, int>? OnSilverChanged;
     public event Action<MasteryNodeId, uint, ushort>? OnBranchUpdate;
     public event Action? OnAbilityUpdate;
 
@@ -28,7 +29,7 @@ public class PlayerEntity : LivingEntity
     public State CurrentState = State.Idle;
     
     public uint PlayerId {get; private set;}
-    public uint Silver {get; private set;}
+    public int Silver {get; private set;}
     public int Exp {get; private set;}
     protected LivingEntity _currentEnemy = null!;
 
@@ -39,7 +40,7 @@ public class PlayerEntity : LivingEntity
 
     private DefaultRunAbility _runAbility = new DefaultRunAbility(AbilityTypes.DefaulthRun);
 
-    public PlayerEntity(uint entityId, Vector3 pos, EntityType type, string name, uint playerId, uint regionId, uint silver) : base(entityId, pos, type, regionId)
+    public PlayerEntity(uint entityId, Vector3 pos, EntityType type, string name, uint playerId, uint regionId, int silver) : base(entityId, pos, type, regionId)
     {
         Name = name;
         PlayerId = playerId;
@@ -185,10 +186,13 @@ public class PlayerEntity : LivingEntity
 
     public void AddExp(int exp)
     {
-        
         Exp += exp;
         OnExpChanged?.Invoke(exp, Exp);
-
+    }
+    public void ChangeSilver(int silver)
+    {
+        Silver += silver;
+        OnSilverChanged?.Invoke(silver, Silver);
     }
 
     public void AddBranchExp(MasteryNodeId id)

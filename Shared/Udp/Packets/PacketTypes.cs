@@ -30,6 +30,7 @@ public enum PacketTypes : ushort
     S2C_EntityMoveSpeedChanged = 22,
     C2S_AdminConsoleCommand = 23,
     S2C_ProjectileDeleted = 24,
-    S2C_ProjectileCreated = 25
+    S2C_ProjectileCreated = 25,
+    S2C_SilverChanged = 26
 
 }

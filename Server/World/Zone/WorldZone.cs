@@ -16,6 +16,7 @@ using Shared.Ability.CastErrors;
 using Server.World.Zone.Projectiles;
 using Shared.Udp.Packets.Category.Game.Projectile;
 using Shared.Zone;
+using Server.World.Zone.Settlement;
 
 namespace Server.World.Zone;
 
@@ -24,6 +25,7 @@ public class WorldZone
     public WorldHolder.ZoneType Type {get; private set;}
     public uint Id {get; private set;}
     private readonly WorldHolder _worldHolder;
+    public BaseSettlement? Settlement { get; set; }
 
     public ZoneRules Rules {get; set;}
 
@@ -230,6 +232,15 @@ public class WorldZone
             };
             _worldHolder.Broadcaster.SendToPlayer<S2C_PlayerExpSyncPacket>(player.PlayerId, PacketTypes.S2C_PlayerExpSync, packet);
 
+        };
+        player.OnSilverChanged += (value, total) =>
+        {
+            var packet = new S2C_SilverChangedPacket
+            {
+                SilverValue = value,
+                TotalSilver = total
+            };
+            _worldHolder.Broadcaster.SendToPlayer<S2C_SilverChangedPacket>(player.PlayerId, PacketTypes.S2C_SilverChanged, packet);
         };
         player.OnBranchUpdate += (branchId, exp, lvl) =>
         {

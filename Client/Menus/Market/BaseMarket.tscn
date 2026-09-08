@@ -240,13 +240,14 @@ _topTab = NodePath("../Panels/TopPanel")
 [node name="Panels" type="VBoxContainer" parent="PanelContainer/Border" unique_id=1277406359]
 layout_mode = 2
 
-[node name="TopPanel" type="PanelContainer" parent="PanelContainer/Border/Panels" unique_id=1700425223]
+[node name="TopPanel" type="PanelContainer" parent="PanelContainer/Border/Panels" unique_id=1700425223 node_paths=PackedStringArray("_silverCount")]
 custom_minimum_size = Vector2(0, 80)
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_u5crc")
 script = ExtResource("2_0h5cj")
+_silverCount = NodePath("Borders/CategoryContainer/Balance/BalanceText")
 
 [node name="Borders" type="MarginContainer" parent="PanelContainer/Border/Panels/TopPanel" unique_id=807844338]
 clip_contents = true

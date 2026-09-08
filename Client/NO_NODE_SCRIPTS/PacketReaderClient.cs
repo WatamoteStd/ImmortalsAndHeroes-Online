@@ -212,6 +212,12 @@ public class PacketReaderClient
                             _networkPackets.Enqueue(packet);
                         }
                     break;
+                    case PacketTypes.S2C_SilverChanged:
+                        {
+                             var packet = PacketSerialier.Deserialize<S2C_SilverChangedPacket>(payload);
+                            _networkPackets.Enqueue(packet);
+                        }
+                    break;
 
                     default:
                         {

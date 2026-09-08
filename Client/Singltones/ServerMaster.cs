@@ -211,7 +211,7 @@ public partial class ServerMaster : Node
 
 			case S2C_PlayerExpSyncPacket expUpd:
 				{
-					GameSession.Instance.PlayerExpCache = expUpd.TotalExp;
+					GameSession.Instance.UpdateExp(expUpd.TotalExp);
 				}
 			break;
 
@@ -274,11 +274,18 @@ public partial class ServerMaster : Node
 					_worldManager?.RemoveProjectile(prjD);
 				}
 			break;
+			case S2C_SilverChangedPacket sPck:
+				{
+					GameSession.Instance.UpdateSilver(sPck.TotalSilver);
+				}
+			break;
 
 		}
 
 	}
 
+
+	#region CLIENT -> SERVER
 	public void LocalPlayerMoveRequest(Vector3 pos)
 	{
 		
@@ -345,5 +352,7 @@ public partial class ServerMaster : Node
 		_socket.Send(buffer[..length]);
 
 	}
+
+	#endregion
 
 }

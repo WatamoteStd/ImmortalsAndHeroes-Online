@@ -20,9 +20,9 @@ public partial class MasteryTree : Control
 	public override void _Ready()
 	{
 
-		VisibilityChanged += () =>
+		GameSession.Instance.OnPlayerDataUpdated += () =>
 		{
-			_playerExp.Text = GameSession.Instance.PlayerExpCache.ToString();
+			_playerExp.Text = GameSession.Instance.PlayerCache.Exp.ToString();
 		};
 
 		// BUTTON SUBS

@@ -15,6 +15,12 @@ public partial class Hud : CanvasLayer
 	private uint _maxHealth;
 	private uint _maxMana;
 
+    public override void _Ready()
+    {
+        GameSession.Instance.OnPlayerDataUpdated += UpdateSilver;
+    }
+
+
 	public void InitHud(float hp, float mp, uint silver, string name)
 	{
 		
@@ -63,6 +69,11 @@ public partial class Hud : CanvasLayer
 		_healthBar.MaxValue = maxHealth;
 		_healthBar.Value = health;
 		_healthBarLabel.Text = health.ToString() + " / " + maxHealth.ToString();
+	}
+
+	public void UpdateSilver()
+	{
+		_silver.Text = GameSession.Instance.PlayerCache.Silver.ToString();
 	}
 
 	public void ShowSelectedEntity(Entity entity)

@@ -15,6 +15,7 @@ using Shared.Udp.Packets.Category.MasteryTree;
 using Shared.MasteryTree;
 using Shared.Udp.Packets.Category.Game.Ability;
 using Shared.Zone;
+using Server.World.Zone.Settlement;
 
 namespace Server.World.Zone;
 
@@ -24,7 +25,7 @@ public class WorldHolder : IWorldHolder
     public enum ZoneType { World, City, Capital, Dungeon}
     public Dictionary<uint, PlayerEntity> idToPlayer = new Dictionary<uint, PlayerEntity>(); // USERID
     public Dictionary<uint, WorldZone> idToZone = new Dictionary<uint, WorldZone>();
-
+    public Dictionary<uint, BaseSettlement> idToSettlement = new Dictionary<uint, BaseSettlement>();
 
 
     private ConcurrentQueue<NetworkCommand> CommandsQueue = new ConcurrentQueue<NetworkCommand>();
@@ -41,17 +42,39 @@ public class WorldHolder : IWorldHolder
         _broadcaster = broadcaster;
         _consoleController = new AdminConsoleController(Broadcaster);
 
+
+        // SETTLEMENTS ==============================================
+        CapitalSettlement chershia = new CapitalSettlement(1, "Chershia");
+        CitySettlement hiacher = new CitySettlement(2, "Hiacher", chershia);
+        VillageSettlement cesi = new VillageSettlement(3, "Cesi", hiacher);
+
+        idToSettlement[chershia.Id] = chershia;
+        idToSettlement[hiacher.Id] = hiacher;
+        idToSettlement[cesi.Id] = cesi;
+
+
+
+
+        // REGIONS ====================================================
+
         WorldZone startZone = new WorldZone(this, ZoneType.World, 0);
         startZone.Rules = ZoneRules.AllowPvE;
 
-        WorldZone cityZone = new WorldZone(this, ZoneType.City, 1);
-        cityZone.Rules = ZoneRules.None;
+        WorldZone cityZone = new WorldZone(this, ZoneType.City, 1)
+        {
+            Rules = ZoneRules.None,
+            Settlement = hiacher
+        };
+
 
         WorldZone semiZone = new WorldZone(this, ZoneType.World, 2);
         semiZone.Rules = ZoneRules.AllowPvP | ZoneRules.AllowPvE | ZoneRules.FullLoot;
 
-        WorldZone capital = new WorldZone(this, ZoneType.Capital, 3);
-        capital.Rules = ZoneRules.None;
+        WorldZone capital = new WorldZone(this, ZoneType.Capital, 3)
+        {
+            Rules = ZoneRules.None,
+            Settlement = chershia
+        };
 
         idToZone[0] = startZone;
         idToZone[1] = cityZone;
@@ -178,7 +201,7 @@ public class WorldHolder : IWorldHolder
         {
 
             Vector3 startPos = new Vector3(character.PosX, character.PosY, character.PosZ);
-            PlayerEntity newPlayer = new PlayerEntity((uint)character.Id, startPos, character.Type, character.Name,(uint)character.UserId, (uint)character.RegionId, (uint)character.Silver);
+            PlayerEntity newPlayer = new PlayerEntity((uint)character.Id, startPos, character.Type, character.Name,(uint)character.UserId, (uint)character.RegionId, (int)character.Silver);
             
             zone.AddPlayer(newPlayer);
             idToPlayer[(uint)character.UserId] = newPlayer;
@@ -255,7 +278,7 @@ public class WorldHolder : IWorldHolder
                         Type = player.ModelType,
                         CurrentHp = player.Health,
                         CurrentMp = player.Mana,
-                        Silver = player.Silver
+                        Silver = (uint)player.Silver
                     };
 
                     _broadcaster.SendToPlayer<S2C_ChangeRegionPacket>(player.PlayerId, PacketTypes.S2C_ChangeRegion, changeRegPacket);
