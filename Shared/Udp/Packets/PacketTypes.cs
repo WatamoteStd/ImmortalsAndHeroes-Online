@@ -31,6 +31,7 @@ public enum PacketTypes : ushort
     C2S_AdminConsoleCommand = 23,
     S2C_ProjectileDeleted = 24,
     S2C_ProjectileCreated = 25,
-    S2C_SilverChanged = 26
+    S2C_SilverChanged = 26,
+    C2S_TreasuryAction = 27 // 0 - withdraw | 1 deposit
 
 }

@@ -16,6 +16,7 @@ using Shared.MasteryTree;
 using Shared.Udp.Packets.Category.Game.Ability;
 using Shared.Zone;
 using Server.World.Zone.Settlement;
+using Shared.Udp.Packets.Category.Settlement;
 
 namespace Server.World.Zone;
 
@@ -179,6 +180,48 @@ public class WorldHolder : IWorldHolder
                         {
                             Console.WriteLine($"[WorldHolder(admin)] Someone who never exists try to execute command");
                         }
+
+                    }
+                break;
+
+                //SETTLEMENT PACKETS
+                case PacketTypes.C2S_TreasuryAction:
+                    {
+                        
+                        var packet = PacketSerialier.Deserialize<C2S_TreasuryActionPacket>(cmd.Data[2..]);
+                        if (idToPlayer.TryGetValue(cmd.Session.UserId, out var player) && idToZone.TryGetValue(player.RegionId, out var zone))
+                        {
+                            
+                            if (zone.Settlement != null)
+                            {
+                                if (packet.ActionType == C2S_TreasuryActionPacket.TreasuryActionType.Withdraw)
+                                {
+                                    
+                                    bool isSuc = zone.Settlement.TryRemoveSilver(packet.Amount);
+                                    if (isSuc) player.ChangeSilver((int)packet.Amount);
+                                    Console.WriteLine($"[WorldHolder] Withdraw action by player:{player.Name} is:{isSuc} Current silver of {zone.Settlement.Name}:{zone.Settlement.Silver}");
+
+                                }
+                                if (packet.ActionType == C2S_TreasuryActionPacket.TreasuryActionType.Deposit)
+                                {
+                                    if (player.Silver >= (int)packet.Amount)
+                                    {
+                                        
+                                        zone.Settlement.AddSilver(packet.Amount);
+                                        player.ChangeSilver(-(int)packet.Amount);
+                                        Console.WriteLine($"[WorldHolder] Withdraw action by player:{player.Name} success! Current silver of {zone.Settlement.Name}:{zone.Settlement.Silver}");
+
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"[WorldHolder] Withdraw action by player:{player.Name} blocked! Not enought silver");
+                                    }
+                        
+                                }
+                            }
+
+                        }
+                        ArrayPool<byte>.Shared.Return(cmd.Data);
 
                     }
                 break;

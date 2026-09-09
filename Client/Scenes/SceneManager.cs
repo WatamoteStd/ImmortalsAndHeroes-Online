@@ -20,6 +20,7 @@ public partial class SceneManager : CanvasLayer
 	[Export] public MarketWindow MarketManagerWindow {get; private set;}
 	[Export] public MasteryTree MasteryTreeWindow {get; private set;}
 	[Export] public DebugConsole ConsoleWindow {get; private set;}
+	[Export] public CityControlWindow SettlementManageWindow {get; private set;}
 
 	public Dictionary<uint, string> regIdToScenePath;
 
@@ -34,8 +35,10 @@ public partial class SceneManager : CanvasLayer
 		else Instance = this;
 
 		Layer = 200;
+		
 		Visible = false;
 		MarketManagerWindow.Visible = false;
+		SettlementManageWindow.Visible = false;
 
 		regIdToScenePath = new Dictionary<uint, string>
 		{
@@ -70,6 +73,18 @@ public partial class SceneManager : CanvasLayer
 		Visible = false;
 
 
+	}
+
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event.IsActionPressed("Back"))
+		{
+			
+			SettlementManageWindow.Visible = false;
+			MasteryTreeWindow.Visible = false;
+			MarketManagerWindow.Visible = false;
+
+		}
 	}
 
    public async Task LoadRegion(uint regionId)
@@ -159,5 +174,8 @@ public partial class SceneManager : CanvasLayer
 		MasteryTreeWindow.Visible = !MasteryTreeWindow.Visible;
 	}
 
-	
+	public void SwitchVisiblitySettlementManage()
+	{
+		SettlementManageWindow.Visible = !SettlementManageWindow.Visible;
+	}
 }

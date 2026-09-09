@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c4khyov2ay7x8" path="res://Menus/Market/BaseMarket.tscn" id="8_q4unc"]
 [ext_resource type="PackedScene" uid="uid://bwfe7uyvwkkqt" path="res://Scenes/MasteryTree/MasteryTree.tscn" id="10_c8mt5"]
 [ext_resource type="PackedScene" uid="uid://croikkvbx066d" path="res://Menus/Console/DebugConsole.tscn" id="12_b0fb2"]
+[ext_resource type="PackedScene" uid="uid://b1grmpgttbycy" path="res://Menus/Settlement/CityControlWindow.tscn" id="13_wi563"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_83fg3"]
 shader = ExtResource("1_yueht")
@@ -186,7 +187,7 @@ bg_color = Color(0.6851024, 0.7241215, 0.7290107, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4unc"]
 bg_color = Color(0.81961036, 0.8449592, 0.84812224, 1)
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1173837242 node_paths=PackedStringArray("_animator", "PlayerHud", "_inventory", "_connectionLostWindow", "_connectionLostButton", "MarketManagerWindow", "MasteryTreeWindow", "ConsoleWindow")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1173837242 node_paths=PackedStringArray("_animator", "PlayerHud", "_inventory", "_connectionLostWindow", "_connectionLostButton", "MarketManagerWindow", "MasteryTreeWindow", "ConsoleWindow", "SettlementManageWindow")]
 visible = false
 script = ExtResource("1_hjya1")
 _animator = NodePath("AnimationPlayer")
@@ -197,6 +198,7 @@ _connectionLostButton = NodePath("UI/HUD/ConnectionLostWindow/VBoxContainer/Menu
 MarketManagerWindow = NodePath("Market/MarkeetWindow")
 MasteryTreeWindow = NodePath("UI/MasteryTree")
 ConsoleWindow = NodePath("Console/DebugConsole")
+SettlementManageWindow = NodePath("SettlementManage/Control")
 
 [node name="Bg" type="TextureRect" parent="." unique_id=1002927567]
 texture_repeat = 2
@@ -569,3 +571,8 @@ layer = 130
 
 [node name="DebugConsole" parent="Console" unique_id=1043015706 instance=ExtResource("12_b0fb2")]
 visible = false
+
+[node name="SettlementManage" type="CanvasLayer" parent="." unique_id=695661829]
+layer = 105
+
+[node name="Control" parent="SettlementManage" unique_id=197754606 instance=ExtResource("13_wi563")]

@@ -8,6 +8,7 @@ using Shared.Udp.Packets.Category.Game;
 using Shared.Udp.Packets.Category.Game.Ability;
 using Shared.Udp.Packets.Category.Game.Projectile;
 using Shared.Udp.Packets.Category.MasteryTree;
+using Shared.Udp.Packets.Category.Settlement;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -349,6 +350,18 @@ public partial class ServerMaster : Node
 		
 		Span<byte> buffer= stackalloc byte[1024];
 		int length = PacketSerialier.Serialize<C2S_AdminConsoleCommandPacket>(buffer, PacketTypes.C2S_AdminConsoleCommand, packet);
+		_socket.Send(buffer[..length]);
+
+	}
+
+
+	// SETTLEMENT
+
+	public void Settlement_TreasuryRequest(C2S_TreasuryActionPacket packet)
+	{
+		
+		Span<byte> buffer = stackalloc byte[64];
+		int length = PacketSerialier.Serialize<C2S_TreasuryActionPacket>(buffer, PacketTypes.C2S_TreasuryAction, packet);
 		_socket.Send(buffer[..length]);
 
 	}

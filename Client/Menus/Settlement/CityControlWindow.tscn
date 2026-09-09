@@ -1064,9 +1064,13 @@ theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 14
 text = "Enabled"
 
-[node name="TreasuryWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=1235523101]
+[node name="TreasuryWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=1235523101 node_paths=PackedStringArray("_currentBalance", "_withdrawButton", "_depositButton", "_amountEdit")]
 layout_mode = 2
 script = ExtResource("15_3sdbp")
+_currentBalance = NodePath("Content/Balance/Silver/SilverBox/Silver")
+_withdrawButton = NodePath("Content/Balance/Actions/Witdhraw")
+_depositButton = NodePath("Content/Balance/Actions/Deposit")
+_amountEdit = NodePath("Content/Balance/Amount")
 
 [node name="Content" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow" unique_id=1549018160]
 layout_mode = 1

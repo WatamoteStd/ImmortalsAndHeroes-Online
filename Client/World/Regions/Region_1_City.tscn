@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c85suyvpyr0sm" path="res://Entities/FloatingText/DamageNumber.tscn" id="5_evw3e"]
 [ext_resource type="PackedScene" uid="uid://cmj1dyd6pn54k" path="res://Entities/Projectiles/ProjectilePrefab.tscn" id="6_6wgx3"]
 [ext_resource type="Script" uid="uid://6h64qpyr230j" path="res://World/Regions/Scripts/CityMarket.cs" id="7_bm4pn"]
+[ext_resource type="Script" uid="uid://byw1jms26stqt" path="res://World/Regions/Scripts/Settlement.cs" id="9_dibqe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ichqs"]
 albedo_color = Color(0.24697644, 0.228971, 0.15267801, 1)
@@ -54,6 +55,54 @@ size = Vector3(15, 7, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_83fg3"]
 size = Vector3(15, 3, 7)
+
+[sub_resource type="Curve" id="Curve_irfkg"]
+_data = [Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_pdr62"]
+_data = [Vector2(0.18421052, 0), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_w4wer"]
+curve_y = SubResource("Curve_irfkg")
+curve_z = SubResource("Curve_pdr62")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_83fg3"]
+emission_shape = 3
+emission_box_extents = Vector3(8, 1, 4)
+direction = Vector3(0, 0, 0)
+directional_velocity_min = 0.9999839
+directional_velocity_max = 0.9999839
+directional_velocity_curve = SubResource("CurveXYZTexture_w4wer")
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swmrk"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.9124266, 0.61191905, 3.85046e-07, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_6u82b"]
+material = SubResource("StandardMaterial3D_swmrk")
+size = Vector2(0.1, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aocp4"]
+albedo_color = Color(0.5452654, 0.5678017, 0.5690741, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mcim0"]
+material = SubResource("StandardMaterial3D_aocp4")
+size = Vector3(15, 7, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6n8af"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.48637617, 0.6951882, 0.9565366, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_53emv"]
+material = SubResource("StandardMaterial3D_6n8af")
+size = Vector2(0.1, 0.05)
 
 [node name="Node3D" type="Node3D" unique_id=1231749597]
 script = ExtResource("1_s2f4u")
@@ -126,5 +175,31 @@ mesh = SubResource("BoxMesh_6u82b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Market" unique_id=384055336]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3841858e-07, -1.4807677, 4.496)
 shape = SubResource("BoxShape3D_83fg3")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Market" unique_id=1434810757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5935917, -2.4207249, 5.064949)
+amount = 220
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_83fg3")
+draw_pass_1 = SubResource("QuadMesh_6u82b")
+
+[node name="Settlement" type="Area3D" parent="." unique_id=1270368208]
+transform = Transform3D(-0.006551024, 0, -0.99997854, 0, 1, 0, 0.99997854, 0, -0.006551024, 9.796375, 3.5, -19.353596)
+script = ExtResource("9_dibqe")
+RegionId = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Settlement" unique_id=865653146]
+mesh = SubResource("BoxMesh_mcim0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Settlement" unique_id=1478895120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3841858e-07, -1.4807677, 4.496)
+shape = SubResource("BoxShape3D_83fg3")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Settlement" unique_id=1464740421]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5935917, -2.4207249, 5.064949)
+amount = 220
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_83fg3")
+draw_pass_1 = SubResource("QuadMesh_53emv")
 
 [node name="Landskape" type="Node3D" parent="." unique_id=1787689261]
