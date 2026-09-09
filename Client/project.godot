@@ -13,6 +13,9 @@ config_version=5
 config/name="MMORPGClient"
 run/main_scene="uid://dg8iiokql2t1a"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
+run/max_fps=60
+run/low_processor_mode=true
+run/low_processor_mode_sleep_usec=6700
 
 [audio]
 

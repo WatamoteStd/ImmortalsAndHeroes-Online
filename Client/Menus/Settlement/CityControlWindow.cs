@@ -9,7 +9,8 @@ public partial class CityControlWindow : Control
 	{
 		None = 0,
 		Tax = 1,
-		Contract = 2
+		Contract = 2,
+		Treasury = 3
 	}
 	public WindowTypes CurrentWindow = WindowTypes.None;
 	private Dictionary<WindowTypes, Control> windowToPanel = new Dictionary<WindowTypes, Control>();
@@ -17,16 +18,26 @@ public partial class CityControlWindow : Control
 	[Export] private Button _taxButton;
 	[Export] private Control _taxWindow;
 	[Export] private Button _contractButton;
-	[Export] private Control _contractWindow;
+	[Export] private ContractsWindow _contractWindow;
+	[Export] private Button _treasuryButton;
+	[Export] private TreasuryWindow _treasuryWindow;
 
 	public override void _Ready()
 	{
 		
 		windowToPanel[WindowTypes.Tax] = _taxWindow;
 		windowToPanel[WindowTypes.Contract] = _contractWindow;
+		windowToPanel[WindowTypes.Treasury] = _treasuryWindow;
 
 		_taxButton.Pressed += () => {OpenWindow(WindowTypes.Tax);};
 		_contractButton.Pressed += () => {OpenWindow(WindowTypes.Contract);};
+		_treasuryButton.Pressed += () => {OpenWindow(WindowTypes.Treasury);};
+
+
+		foreach (var window in windowToPanel.Values)
+		{
+			window.Visible = false;
+		}
 
 	}
 

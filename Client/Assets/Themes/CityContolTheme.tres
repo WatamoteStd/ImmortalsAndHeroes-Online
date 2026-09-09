@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dnsowglwsqikn" path="res://Assets/Themes/Settings/CheckBox_Checked.png" id="1_lisey"]
 [ext_resource type="Texture2D" uid="uid://beedg4oexbefn" path="res://Assets/Themes/Settings/CheckBox_Unchecked.png" id="2_f7tl3"]
+[ext_resource type="FontFile" uid="uid://dv1oqiqtkvkcw" path="res://Assets/Fonts/Cinzel/Cinzel-VariableFont_wght.ttf" id="3_f7tl3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls1w7"]
 bg_color = Color(0.13071015, 0.16153589, 0.17915234, 1)
@@ -25,5 +26,7 @@ border_blend = true
 CheckBox/constants/icon_max_width = 16
 CheckBox/icons/checked = ExtResource("1_lisey")
 CheckBox/icons/unchecked = ExtResource("2_f7tl3")
+LineEdit/font_sizes/font_size = 15
+LineEdit/fonts/font = ExtResource("3_f7tl3")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_ls1w7")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_4hmhi")

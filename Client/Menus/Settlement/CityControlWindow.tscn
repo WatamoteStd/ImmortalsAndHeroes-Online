@@ -8,7 +8,15 @@
 [ext_resource type="FontFile" uid="uid://cwopwcmr1l4ek" path="res://Assets/Fonts/Console/FiraCode-Light.ttf" id="5_4hmhi"]
 [ext_resource type="FontFile" uid="uid://bcun702jlnmlu" path="res://Assets/Fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf" id="6_25nrq"]
 [ext_resource type="FontFile" uid="uid://cyg1hjdk34dxc" path="res://Assets/Fonts/Inter/static/Inter_18pt-Regular.ttf" id="7_s7cfy"]
+[ext_resource type="Script" uid="uid://bfjpxwda24ack" path="res://Menus/Settlement/ContractsWindow.cs" id="7_vr2do"]
 [ext_resource type="ButtonGroup" uid="uid://fj30pbfk6jfk" path="res://Menus/Settlement/TypeGroup.tres" id="8_jgymv"]
+[ext_resource type="FontFile" uid="uid://cpoenis73vt8j" path="res://Assets/Fonts/Inter/static/Inter_24pt-Regular.ttf" id="10_0vfle"]
+[ext_resource type="FontFile" uid="uid://ohuw2em0qnde" path="res://Assets/Fonts/Inter/static/Inter_18pt-LightItalic.ttf" id="11_j7b1v"]
+[ext_resource type="FontFile" uid="uid://b16vjnk4by3wd" path="res://Assets/Fonts/Optimus/optimusprinceps.ttf" id="12_f4wsa"]
+[ext_resource type="FontFile" uid="uid://6ij3o0dxb1et" path="res://Assets/Fonts/Inter/static/Inter_18pt-ExtraLightItalic.ttf" id="12_j7b1v"]
+[ext_resource type="Script" uid="uid://g5ofh5w7ewkr" path="res://Menus/Settlement/TreasuryWindow.cs" id="15_3sdbp"]
+[ext_resource type="FontFile" uid="uid://7fublagmhdbs" path="res://Assets/Fonts/Inter/static/Inter_18pt-Medium.ttf" id="15_8v43j"]
+[ext_resource type="FontFile" uid="uid://hcrriv77m3rl" path="res://Assets/Fonts/Inter/static/Inter_24pt-LightItalic.ttf" id="16_3sdbp"]
 
 [sub_resource type="Gradient" id="Gradient_dgph8"]
 colors = PackedColorArray(0.14342147, 0.18090776, 0.2099526, 0.89411765, 0.2724937, 0.32410726, 0.35953224, 1)
@@ -150,7 +158,100 @@ bg_color = Color(0.26962942, 0.31515634, 0.3291582, 0.654902)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7odum"]
 bg_color = Color(0.38592, 0.44334066, 0.46102375, 0.654902)
 
-[node name="Control" type="Control" unique_id=197754606 node_paths=PackedStringArray("_taxButton", "_taxWindow", "_contractButton", "_contractWindow")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nwtp2"]
+content_margin_left = 7.0
+content_margin_top = 3.0
+content_margin_right = 7.0
+content_margin_bottom = 3.0
+bg_color = Color(0.60169786, 0.44440553, 1.92523e-07, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdg7n"]
+content_margin_left = 7.0
+content_margin_top = 3.0
+content_margin_right = 7.0
+content_margin_bottom = 3.0
+bg_color = Color(0.55663306, 0.41015595, 3.85046e-07, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk4os"]
+content_margin_left = 7.0
+content_margin_top = 3.0
+content_margin_right = 7.0
+content_margin_bottom = 3.0
+bg_color = Color(0.6800962, 0.5040513, 0, 1)
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gxst"]
+bg_color = Color(0.30210054, 0.3537154, 0.39152083, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_be1kd"]
+bg_color = Color(0.34393162, 0.39939073, 0.44207904, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k81rv"]
+bg_color = Color(0.20929289, 0.24857181, 0.27875665, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhkmh"]
+bg_color = Color(0.37220678, 0.43031633, 0.4756189, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n08ex"]
+bg_color = Color(0.42050502, 0.4829365, 0.5287698, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ckrc"]
+bg_color = Color(0.29755703, 0.34864414, 0.38606095, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_83fg3"]
+color = Color(0.42352942, 0.58431375, 0.28627452, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_3sdbp"]
+color = Color(0.4607128, 0.7087349, 0.39189887, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qm0se"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.23229039, 0.36448565, 0.5151843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wgeg"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.21305814, 0.33942837, 0.48057854, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1syv"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.25443497, 0.3957981, 0.5539391, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f8nnt"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.21010536, 0.39632106, 0.35210726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyxuw"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.19827393, 0.3743422, 0.33317745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88c5b"]
+content_margin_left = 15.0
+content_margin_top = 5.0
+content_margin_right = 15.0
+content_margin_bottom = 5.0
+bg_color = Color(0.23961681, 0.44018105, 0.39312303, 1)
+
+[node name="Control" type="Control" unique_id=197754606 node_paths=PackedStringArray("_taxButton", "_taxWindow", "_contractButton", "_contractWindow", "_treasuryButton", "_treasuryWindow")]
 custom_minimum_size = Vector2(850, 500)
 layout_mode = 3
 anchors_preset = 8
@@ -162,10 +263,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_x7jl3")
 script = ExtResource("2_6ebi5")
-_taxButton = NodePath("HBoxContainer/Tabs/Taxes")
-_taxWindow = NodePath("HBoxContainer/OutdrawWindow/Content/TaxWindow")
-_contractButton = NodePath("HBoxContainer/Tabs/Contracts")
-_contractWindow = NodePath("HBoxContainer/OutdrawWindow/Content/ContractsWindow")
+_taxButton = NodePath("Content/Tabs/Taxes")
+_taxWindow = NodePath("Content/OutdrawWindow/Content/TaxWindow")
+_contractButton = NodePath("Content/Tabs/Contracts")
+_contractWindow = NodePath("Content/OutdrawWindow/Content/ContractsWindow")
+_treasuryButton = NodePath("Content/Tabs/Treasury")
+_treasuryWindow = NodePath("Content/OutdrawWindow/Content/TreasuryWindow")
 
 [node name="bg" type="TextureRect" parent="." unique_id=303192368]
 layout_mode = 1
@@ -197,7 +300,7 @@ texture = ExtResource("1_ejyun")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1980898387]
+[node name="Content" type="HBoxContainer" parent="." unique_id=1980898387]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -206,11 +309,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
 
-[node name="Tabs" type="VBoxContainer" parent="HBoxContainer" unique_id=593293499]
+[node name="Tabs" type="VBoxContainer" parent="Content" unique_id=593293499]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Taxes" type="Button" parent="HBoxContainer/Tabs" unique_id=1198631417]
+[node name="Taxes" type="Button" parent="Content/Tabs" unique_id=1198631417]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
 theme_override_fonts/font = ExtResource("1_gach8")
@@ -220,7 +323,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
 text = "TAXES"
 
-[node name="Guilhall" type="Button" parent="HBoxContainer/Tabs" unique_id=476837339]
+[node name="Guilhall" type="Button" parent="Content/Tabs" unique_id=476837339]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
 theme_override_fonts/font = ExtResource("1_gach8")
@@ -230,7 +333,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
 text = "GUILD HALL"
 
-[node name="Contracts" type="Button" parent="HBoxContainer/Tabs" unique_id=1570730579]
+[node name="Contracts" type="Button" parent="Content/Tabs" unique_id=1570730579]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
 theme_override_fonts/font = ExtResource("1_gach8")
@@ -240,7 +343,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
 text = "CONTRACTS"
 
-[node name="Treasury" type="Button" parent="HBoxContainer/Tabs" unique_id=1803897671]
+[node name="Treasury" type="Button" parent="Content/Tabs" unique_id=1803897671]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
 theme_override_fonts/font = ExtResource("1_gach8")
@@ -250,7 +353,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
 text = "TREASURY"
 
-[node name="Lands" type="Button" parent="HBoxContainer/Tabs" unique_id=519563262]
+[node name="Lands" type="Button" parent="Content/Tabs" unique_id=519563262]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
 theme_override_fonts/font = ExtResource("1_gach8")
@@ -260,7 +363,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
 text = "LANDS"
 
-[node name="City" type="Button" parent="HBoxContainer/Tabs" unique_id=530589196]
+[node name="City" type="Button" parent="Content/Tabs" unique_id=530589196]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
 theme_override_fonts/font = ExtResource("1_gach8")
@@ -270,23 +373,23 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
 text = "CITY"
 
-[node name="OutdrawWindow" type="PanelContainer" parent="HBoxContainer" unique_id=1702654569]
+[node name="OutdrawWindow" type="PanelContainer" parent="Content" unique_id=1702654569]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_dgph8")
 
-[node name="Content" type="MarginContainer" parent="HBoxContainer/OutdrawWindow" unique_id=825768288]
+[node name="Content" type="MarginContainer" parent="Content/OutdrawWindow" unique_id=825768288]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 5
 
-[node name="TaxWindow" type="Control" parent="HBoxContainer/OutdrawWindow/Content" unique_id=1270295511]
+[node name="TaxWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=1270295511]
 visible = false
 layout_mode = 2
 
-[node name="Content" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow" unique_id=367258922]
+[node name="Content" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow" unique_id=367258922]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -295,38 +398,39 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="TitleBox" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content" unique_id=1611969571]
+[node name="TitleBox" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content" unique_id=1611969571]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/TitleBox" unique_id=370582298]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/TitleBox" unique_id=370582298]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.34113702, 0.6121254, 0.8891779, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 26
 text = "TAX CATEGORY"
+horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/TitleBox" unique_id=1597415434]
+[node name="HSeparator" type="HSeparator" parent="Content/OutdrawWindow/Content/TaxWindow/Content/TitleBox" unique_id=1597415434]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_ichqs")
 
-[node name="Types" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content" unique_id=365421322]
+[node name="Types" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content" unique_id=365421322]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/separation = 15
 
-[node name="Market" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types" unique_id=1357005957]
+[node name="Market" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types" unique_id=1357005957]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="name" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/Market" unique_id=1343155641]
+[node name="name" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types/Market" unique_id=1343155641]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 20
 text = "Market"
 
-[node name="MarketBox" type="SpinBox" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/Market" unique_id=273373350]
+[node name="MarketBox" type="SpinBox" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types/Market" unique_id=273373350]
 layout_mode = 2
 theme_override_styles/up_background = SubResource("StyleBoxFlat_cvnqq")
 theme_override_styles/up_background_hovered = SubResource("StyleBoxFlat_x7jl3")
@@ -340,17 +444,17 @@ alignment = 1
 update_on_text_changed = true
 suffix = "%"
 
-[node name="PlotBuy" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types" unique_id=828648813]
+[node name="PlotBuy" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types" unique_id=828648813]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="name" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotBuy" unique_id=598764012]
+[node name="name" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types/PlotBuy" unique_id=598764012]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 20
 text = "PLOT PURCHASE TAX"
 
-[node name="SteadBox" type="SpinBox" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotBuy" unique_id=346621128]
+[node name="SteadBox" type="SpinBox" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types/PlotBuy" unique_id=346621128]
 layout_mode = 2
 theme_override_styles/up_background = SubResource("StyleBoxFlat_cvnqq")
 theme_override_styles/up_background_hovered = SubResource("StyleBoxFlat_x7jl3")
@@ -364,21 +468,21 @@ alignment = 1
 update_on_text_changed = true
 suffix = "%"
 
-[node name="PlotRentTax" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types" unique_id=586647671]
+[node name="PlotRentTax" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types" unique_id=586647671]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="PlotPercent" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax" unique_id=425094592]
+[node name="PlotPercent" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax" unique_id=425094592]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="name" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotPercent" unique_id=1675764663]
+[node name="name" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotPercent" unique_id=1675764663]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 20
 text = "PLOT RENT"
 
-[node name="SteadBox" type="SpinBox" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotPercent" unique_id=379369781]
+[node name="SteadBox" type="SpinBox" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotPercent" unique_id=379369781]
 layout_mode = 2
 theme_override_styles/up_background = SubResource("StyleBoxFlat_cvnqq")
 theme_override_styles/up_background_hovered = SubResource("StyleBoxFlat_x7jl3")
@@ -392,17 +496,17 @@ alignment = 1
 update_on_text_changed = true
 suffix = "%"
 
-[node name="PlotFix" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax" unique_id=1724909952]
+[node name="PlotFix" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax" unique_id=1724909952]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="name" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotFix" unique_id=1829169822]
+[node name="name" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotFix" unique_id=1829169822]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 20
 text = "PLOT FIXED"
 
-[node name="SteadBox" type="SpinBox" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotFix" unique_id=1431490966]
+[node name="SteadBox" type="SpinBox" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotFix" unique_id=1431490966]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_styles/up_background = SubResource("StyleBoxFlat_cvnqq")
@@ -418,19 +522,19 @@ alignment = 1
 update_on_text_changed = true
 suffix = "silver"
 
-[node name="DetailedStatTitle" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content" unique_id=483788578]
+[node name="DetailedStatTitle" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content" unique_id=483788578]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 25
 
-[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/DetailedStatTitle" unique_id=523808502]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/DetailedStatTitle" unique_id=523808502]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.16159528, 0.41158748, 0.6550299, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 26
 text = "DETAILED STATISTICS"
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/DetailedStatTitle" unique_id=1796414463]
+[node name="OptionButton" type="OptionButton" parent="Content/OutdrawWindow/Content/TaxWindow/Content/DetailedStatTitle" unique_id=1796414463]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("5_4hmhi")
@@ -449,20 +553,20 @@ popup/item_2/id = 2
 popup/item_3/text = "Last Mount"
 popup/item_3/id = 3
 
-[node name="Stat" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content" unique_id=1626552802]
+[node name="Stat" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content" unique_id=1626552802]
 layout_mode = 2
 
-[node name="marketTax" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1513180859]
+[node name="marketTax" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1513180859]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/marketTax" unique_id=1487042422]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/marketTax" unique_id=1487042422]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 15
 text = "Market tax"
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/marketTax" unique_id=1099226630]
+[node name="ProgressBar" type="ProgressBar" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/marketTax" unique_id=1099226630]
 custom_minimum_size = Vector2(350, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
@@ -471,25 +575,25 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_j7b1v")
 value = 35.0
 show_percentage = false
 
-[node name="SilverCount" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/marketTax" unique_id=355877186]
+[node name="SilverCount" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/marketTax" unique_id=355877186]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 15
 text = "1,050 (35%)"
 
-[node name="PlotPurchase" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1511569408]
+[node name="PlotPurchase" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1511569408]
 layout_mode = 2
 theme_override_constants/separation = 26
 
-[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotPurchase" unique_id=449022345]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotPurchase" unique_id=449022345]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 15
 text = "Plot Buy"
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotPurchase" unique_id=2085320647]
+[node name="ProgressBar" type="ProgressBar" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotPurchase" unique_id=2085320647]
 custom_minimum_size = Vector2(350, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
@@ -498,25 +602,25 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_vr2do")
 value = 50.0
 show_percentage = false
 
-[node name="SilverCount" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotPurchase" unique_id=682364982]
+[node name="SilverCount" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotPurchase" unique_id=682364982]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 15
 text = "1,500 (50%)"
 
-[node name="PlotRent" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1060782927]
+[node name="PlotRent" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1060782927]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotRent" unique_id=1439343628]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotRent" unique_id=1439343628]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 15
 text = "Plot Rent"
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotRent" unique_id=1683955665]
+[node name="ProgressBar" type="ProgressBar" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotRent" unique_id=1683955665]
 custom_minimum_size = Vector2(350, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
@@ -525,48 +629,54 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_8v43j")
 value = 15.0
 show_percentage = false
 
-[node name="SilverCount" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotRent" unique_id=2038329862]
+[node name="SilverCount" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotRent" unique_id=2038329862]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 15
 text = "450 (15%)"
 
-[node name="Total" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1422148908]
+[node name="Total" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1422148908]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/Total" unique_id=807181491]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/Total" unique_id=807181491]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.58407605, 0.64181954, 0.7851287, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 17
 text = "Total Revenue: "
 
-[node name="Count" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/Total" unique_id=1047835775]
+[node name="Count" type="Label" parent="Content/OutdrawWindow/Content/TaxWindow/Content/Stat/Total" unique_id=1047835775]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.58407605, 0.64181954, 0.7851287, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 17
 text = "3,000"
 
-[node name="ContractsWindow" type="Control" parent="HBoxContainer/OutdrawWindow/Content" unique_id=979186598]
+[node name="ContractsWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=979186598 node_paths=PackedStringArray("_totalPriceLabel", "_countEdit", "_costEdit", "_isTaxFreeBox", "_taxEdit")]
 visible = false
 layout_mode = 2
+script = ExtResource("7_vr2do")
+_totalPriceLabel = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/TotalPrice/Silver/Count")
+_countEdit = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/Count/LineEdit")
+_costEdit = NodePath("VBoxContainer/DetailPanel/VBoxContainer/SilverTab/Cost/Price")
+_isTaxFreeBox = NodePath("VBoxContainer/DetailPanel/VBoxContainer/SilverTab/IsTax/CheckBox")
+_taxEdit = NodePath("VBoxContainer/DetailPanel/VBoxContainer/SilverTab/TaxFee/Price")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow" unique_id=1885406765]
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow" unique_id=1885406765]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 45
+theme_override_constants/separation = 15
 
-[node name="TitleBox" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer" unique_id=761254970]
+[node name="TitleBox" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer" unique_id=761254970]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/TitleBox" unique_id=546340475]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/TitleBox" unique_id=546340475]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7869162, 0.6602327, 0.37106386, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
@@ -574,11 +684,11 @@ theme_override_font_sizes/font_size = 26
 text = "CREATE ROYAL CONTRACT"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/TitleBox" unique_id=1033598177]
+[node name="HSeparator" type="HSeparator" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/TitleBox" unique_id=1033598177]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_s7cfy")
 
-[node name="Description" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/TitleBox" unique_id=1083097915]
+[node name="Description" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/TitleBox" unique_id=1083097915]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -589,22 +699,22 @@ text = "Royal Contracts allow the ruler to balance the economy, attract new play
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="DetailPanel" type="PanelContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer" unique_id=953139883]
+[node name="DetailPanel" type="PanelContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer" unique_id=953139883]
 custom_minimum_size = Vector2(0, 230)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_6u82b")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel" unique_id=416565795]
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel" unique_id=416565795]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Type" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer" unique_id=1629767571]
+[node name="Type" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer" unique_id=1629767571]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type" unique_id=817417814]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type" unique_id=817417814]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -613,15 +723,15 @@ theme_override_fonts/font = ExtResource("7_s7cfy")
 theme_override_font_sizes/font_size = 18
 text = "SELECT CONTRACT TYPE"
 
-[node name="Category" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type" unique_id=1601870332]
+[node name="Category" type="HBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type" unique_id=1601870332]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 25
 
-[node name="Res" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category" unique_id=1491193742]
+[node name="Res" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category" unique_id=1491193742]
 layout_mode = 2
 
-[node name="Res" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Res" unique_id=96404769]
+[node name="Res" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Res" unique_id=96404769]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -630,7 +740,7 @@ theme_override_fonts/font = ExtResource("7_s7cfy")
 theme_override_font_sizes/font_size = 12
 text = "Resource"
 
-[node name="ResourceBox" type="CheckBox" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Res" unique_id=1005654731]
+[node name="ResourceBox" type="CheckBox" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Res" unique_id=1005654731]
 custom_maximum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -638,10 +748,10 @@ size_flags_vertical = 4
 button_pressed = true
 button_group = ExtResource("8_jgymv")
 
-[node name="Hunt" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category" unique_id=473390026]
+[node name="Hunt" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category" unique_id=473390026]
 layout_mode = 2
 
-[node name="Res2" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Hunt" unique_id=2054827097]
+[node name="Res2" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Hunt" unique_id=2054827097]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -651,23 +761,23 @@ theme_override_fonts/font = ExtResource("7_s7cfy")
 theme_override_font_sizes/font_size = 12
 text = "Hunting"
 
-[node name="ResourceBox2" type="CheckBox" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Hunt" unique_id=115955068]
+[node name="ResourceBox2" type="CheckBox" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Hunt" unique_id=115955068]
 custom_maximum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 button_group = ExtResource("8_jgymv")
 
-[node name="Content" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer" unique_id=2104377776]
+[node name="Resource&Price" type="HBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer" unique_id=2104377776]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Name" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content" unique_id=346900880]
+[node name="Name" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price" unique_id=346900880]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Name" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Name" unique_id=1612658608]
+[node name="Name" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/Name" unique_id=1612658608]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -676,7 +786,7 @@ theme_override_fonts/font = ExtResource("7_s7cfy")
 theme_override_font_sizes/font_size = 14
 text = "Resource Name"
 
-[node name="Type" type="OptionButton" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Name" unique_id=1677541499]
+[node name="Type" type="OptionButton" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/Name" unique_id=1677541499]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_vcdtc")
@@ -689,12 +799,12 @@ popup/item_0/id = 0
 popup/item_1/text = "Wolf Skin"
 popup/item_1/id = 1
 
-[node name="Tier" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content" unique_id=1228372597]
+[node name="Tier" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price" unique_id=1228372597]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Tier" unique_id=531504438]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/Tier" unique_id=531504438]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -703,7 +813,7 @@ theme_override_fonts/font = ExtResource("7_s7cfy")
 theme_override_font_sizes/font_size = 14
 text = "Quality"
 
-[node name="Type" type="OptionButton" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Tier" unique_id=2026774801]
+[node name="Type" type="OptionButton" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/Tier" unique_id=2026774801]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_vcdtc")
@@ -728,12 +838,12 @@ popup/item_6/id = 6
 popup/item_7/text = "Primordial"
 popup/item_7/id = 7
 
-[node name="Count" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content" unique_id=1543511562]
+[node name="Count" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price" unique_id=1543511562]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Count" unique_id=1998191864]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/Count" unique_id=1998191864]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -742,10 +852,322 @@ theme_override_fonts/font = ExtResource("7_s7cfy")
 theme_override_font_sizes/font_size = 14
 text = "Count"
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Count" unique_id=1093560531]
+[node name="LineEdit" type="LineEdit" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/Count" unique_id=1093560531]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 10
 placeholder_text = "0"
 alignment = 1
 max_length = 6
+
+[node name="TotalPrice" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price" unique_id=1149997159]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/TotalPrice" unique_id=1643723027]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.40003145, 0.63029575, 0.7817451, 1)
+theme_override_fonts/font = ExtResource("10_0vfle")
+theme_override_font_sizes/font_size = 21
+text = "TOTAL PRICE"
+
+[node name="Silver" type="HBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/TotalPrice" unique_id=547793176]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Count" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/TotalPrice/Silver" unique_id=1585993080]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.8066419, 0.8589669, 0.90281254, 1)
+theme_override_fonts/font = ExtResource("11_j7b1v")
+theme_override_font_sizes/font_size = 18
+text = "0"
+
+[node name="Sufix" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/TotalPrice/Silver" unique_id=2025987332]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.8066419, 0.8589669, 0.90281254, 1)
+theme_override_fonts/font = ExtResource("11_j7b1v")
+theme_override_font_sizes/font_size = 18
+text = "SILVER"
+
+[node name="Button" type="Button" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/TotalPrice" unique_id=1295159305]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.8084745, 0.79814976, 0.77942044, 1)
+theme_override_fonts/font = ExtResource("12_f4wsa")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_nwtp2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bdg7n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fk4os")
+text = "CREATE CONTRACT"
+
+[node name="SilverTab" type="HBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer" unique_id=1353065879]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Cost" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/SilverTab" unique_id=2109997875]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/SilverTab/Cost" unique_id=1337435705]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.70395577, 0.784935, 0.78366435, 1)
+theme_override_fonts/font = ExtResource("7_s7cfy")
+theme_override_font_sizes/font_size = 14
+text = "Price"
+
+[node name="Price" type="SpinBox" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/SilverTab/Cost" unique_id=795991288]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/field_and_buttons_separation = 0
+theme_override_styles/up_background = SubResource("StyleBoxFlat_2gxst")
+theme_override_styles/up_background_hovered = SubResource("StyleBoxFlat_be1kd")
+theme_override_styles/up_background_pressed = SubResource("StyleBoxFlat_k81rv")
+theme_override_styles/down_background = SubResource("StyleBoxFlat_uhkmh")
+theme_override_styles/down_background_hovered = SubResource("StyleBoxFlat_n08ex")
+theme_override_styles/down_background_pressed = SubResource("StyleBoxFlat_3ckrc")
+min_value = 1.0
+max_value = 100000.0
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+suffix = "silver"
+
+[node name="TaxFee" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/SilverTab" unique_id=1913359132]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/SilverTab/TaxFee" unique_id=1883031556]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.70395577, 0.784935, 0.78366435, 1)
+theme_override_fonts/font = ExtResource("7_s7cfy")
+theme_override_font_sizes/font_size = 14
+text = "Tax Percent"
+
+[node name="Price" type="SpinBox" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/SilverTab/TaxFee" unique_id=1403928634]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/field_and_buttons_separation = 0
+theme_override_styles/up_background = SubResource("StyleBoxFlat_2gxst")
+theme_override_styles/up_background_hovered = SubResource("StyleBoxFlat_be1kd")
+theme_override_styles/up_background_pressed = SubResource("StyleBoxFlat_k81rv")
+theme_override_styles/down_background = SubResource("StyleBoxFlat_uhkmh")
+theme_override_styles/down_background_hovered = SubResource("StyleBoxFlat_n08ex")
+theme_override_styles/down_background_pressed = SubResource("StyleBoxFlat_3ckrc")
+min_value = 1.0
+step = 0.1
+value = 2.5
+alignment = 1
+update_on_text_changed = true
+suffix = "%"
+
+[node name="IsTax" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/SilverTab" unique_id=967833132]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="CheckBox" type="CheckBox" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/SilverTab/IsTax" unique_id=696405195]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.5688175, 0.7448822, 0.6043346, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 14
+text = "Tax Free"
+
+[node name="Bottom" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer" unique_id=1206148388]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Bottom" unique_id=2061143298]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.46274197, 0.642012, 0.2953427, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 20
+text = "PER PLAYER LIMIT"
+
+[node name="Description" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Bottom" unique_id=262807929]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.38700908, 0.54380697, 0.23936701, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 12
+text = "Per-Player Quota (Limit): Restrict the maximum amount of resources a single player can deliver. Enable this to distribute rewards among many players and attract newcomers to your city."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Bottom" unique_id=1311740483]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_83fg3")
+
+[node name="PlayerLimit" type="HBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Bottom" unique_id=120211407]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="TaxFee" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Bottom/PlayerLimit" unique_id=1897259638]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Bottom/PlayerLimit/TaxFee" unique_id=1696129698]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.4624229, 0.6336513, 0.31697384, 1)
+theme_override_fonts/font = ExtResource("12_j7b1v")
+theme_override_font_sizes/font_size = 14
+text = "Count "
+
+[node name="Price" type="SpinBox" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Bottom/PlayerLimit/TaxFee" unique_id=703835398]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/field_and_buttons_separation = 0
+theme_override_styles/up_background = SubResource("StyleBoxFlat_2gxst")
+theme_override_styles/up_background_hovered = SubResource("StyleBoxFlat_be1kd")
+theme_override_styles/up_background_pressed = SubResource("StyleBoxFlat_k81rv")
+theme_override_styles/down_background = SubResource("StyleBoxFlat_uhkmh")
+theme_override_styles/down_background_hovered = SubResource("StyleBoxFlat_n08ex")
+theme_override_styles/down_background_pressed = SubResource("StyleBoxFlat_3ckrc")
+min_value = 1.0
+value = 1.0
+alignment = 1
+update_on_text_changed = true
+suffix = "unit"
+
+[node name="IsLimit" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Bottom/PlayerLimit" unique_id=1132969208]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="CheckBox" type="CheckBox" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Bottom/PlayerLimit/IsLimit" unique_id=351566368]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.5688175, 0.7448822, 0.6043346, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 14
+text = "Enabled"
+
+[node name="TreasuryWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=1235523101]
+layout_mode = 2
+script = ExtResource("15_3sdbp")
+
+[node name="Content" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow" unique_id=1549018160]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="TitleBox" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content" unique_id=976365264]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/TitleBox" unique_id=480362831]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4888636, 0.74409634, 0.4172237, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 32
+text = "TREASURY"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/TitleBox" unique_id=998167575]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_3sdbp")
+
+[node name="Description" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/TitleBox" unique_id=1091954829]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.34453753, 0.39915428, 0.48646492, 1)
+theme_override_fonts/font = ExtResource("6_25nrq")
+theme_override_font_sizes/font_size = 14
+text = "Control the treasury of the whole city"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Balance" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content" unique_id=1110446845]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Silver" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance" unique_id=940005553]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Silver" unique_id=305200819]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.9164068, 0.8617549, 0.8935451, 1)
+theme_override_fonts/font = ExtResource("15_8v43j")
+theme_override_font_sizes/font_size = 21
+text = "TOTAL CITY BALANCE"
+
+[node name="SilverBox" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Silver" unique_id=624884089]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Silver" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Silver/SilverBox" unique_id=262989583]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.86575145, 0.89717835, 0.91058767, 1)
+theme_override_fonts/font = ExtResource("16_3sdbp")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Sufix" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Silver/SilverBox" unique_id=659474446]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.86575145, 0.89717835, 0.91058767, 1)
+theme_override_fonts/font = ExtResource("16_3sdbp")
+theme_override_font_sizes/font_size = 20
+text = "SILVER"
+
+[node name="Amount" type="LineEdit" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance" unique_id=2124425549]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+placeholder_text = "Amount"
+alignment = 1
+max_length = 6
+
+[node name="Actions" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance" unique_id=1472671098]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Deposit" type="Button" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Actions" unique_id=2007866171]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("12_f4wsa")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_qm0se")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5wgeg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_y1syv")
+text = "Deposit"
+
+[node name="Witdhraw" type="Button" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Actions" unique_id=1846543888]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("12_f4wsa")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_f8nnt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eyxuw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_88c5b")
+text = "Witdhraw"
