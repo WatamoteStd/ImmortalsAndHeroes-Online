@@ -1,0 +1,29 @@
+[gd_resource type="Theme" format=3 uid="uid://dh3dnl53crx5k"]
+
+[ext_resource type="Texture2D" uid="uid://dnsowglwsqikn" path="res://Assets/Themes/Settings/CheckBox_Checked.png" id="1_lisey"]
+[ext_resource type="Texture2D" uid="uid://beedg4oexbefn" path="res://Assets/Themes/Settings/CheckBox_Unchecked.png" id="2_f7tl3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls1w7"]
+bg_color = Color(0.13071015, 0.16153589, 0.17915234, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42584628, 0.4884485, 0.53189737, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hmhi"]
+bg_color = Color(0.109069295, 0.13680214, 0.15343463, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.29951504, 0.3483543, 0.38389343, 1)
+border_blend = true
+
+[resource]
+CheckBox/constants/icon_max_width = 16
+CheckBox/icons/checked = ExtResource("1_lisey")
+CheckBox/icons/unchecked = ExtResource("2_f7tl3")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_ls1w7")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_4hmhi")

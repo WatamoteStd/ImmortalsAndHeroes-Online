@@ -1,0 +1,751 @@
+[gd_scene format=3 uid="uid://b1grmpgttbycy"]
+
+[ext_resource type="Texture2D" uid="uid://bequvrgrslyo" path="res://Assets/Icons/CityControlPanel/Gerb.png" id="1_ejyun"]
+[ext_resource type="FontFile" uid="uid://blfbj74e4y3jk" path="res://Assets/Fonts/Console/FiraCode-Regular.ttf" id="1_gach8"]
+[ext_resource type="Theme" uid="uid://dh3dnl53crx5k" path="res://Assets/Themes/CityContolTheme.tres" id="1_x7jl3"]
+[ext_resource type="Script" uid="uid://cyj0dhcuxlcbc" path="res://Menus/Settlement/CityControlWindow.cs" id="2_6ebi5"]
+[ext_resource type="FontFile" uid="uid://dv1oqiqtkvkcw" path="res://Assets/Fonts/Cinzel/Cinzel-VariableFont_wght.ttf" id="3_cvnqq"]
+[ext_resource type="FontFile" uid="uid://cwopwcmr1l4ek" path="res://Assets/Fonts/Console/FiraCode-Light.ttf" id="5_4hmhi"]
+[ext_resource type="FontFile" uid="uid://bcun702jlnmlu" path="res://Assets/Fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf" id="6_25nrq"]
+[ext_resource type="FontFile" uid="uid://cyg1hjdk34dxc" path="res://Assets/Fonts/Inter/static/Inter_18pt-Regular.ttf" id="7_s7cfy"]
+[ext_resource type="ButtonGroup" uid="uid://fj30pbfk6jfk" path="res://Menus/Settlement/TypeGroup.tres" id="8_jgymv"]
+
+[sub_resource type="Gradient" id="Gradient_dgph8"]
+colors = PackedColorArray(0.14342147, 0.18090776, 0.2099526, 0.89411765, 0.2724937, 0.32410726, 0.35953224, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_83fg3"]
+gradient = SubResource("Gradient_dgph8")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83fg3"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.1764706, 0.2784314, 0.39215687, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.27892175, 0.32873064, 0.36362487, 1)
+border_blend = true
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gach8"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.14883408, 0.23951155, 0.3406055, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3187523, 0.37462658, 0.41333172, 1)
+border_blend = true
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ejyun"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.21696088, 0.33439323, 0.4654956, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35121384, 0.4105928, 0.45174992, 1)
+border_blend = true
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgph8"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.22443488, 0.3445461, 0.47866702, 1)
+border_blend = true
+shadow_size = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ichqs"]
+color = Color(0.41001835, 0.47200227, 0.52173966, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvnqq"]
+bg_color = Color(0.30210054, 0.3537154, 0.39152083, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7jl3"]
+bg_color = Color(0.34393162, 0.39939073, 0.44207904, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25nrq"]
+bg_color = Color(0.20929289, 0.24857181, 0.27875665, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hmhi"]
+bg_color = Color(0.37220678, 0.43031633, 0.4756189, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7cfy"]
+bg_color = Color(0.42050502, 0.4829365, 0.5287698, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgymv"]
+bg_color = Color(0.29755703, 0.34864414, 0.38606095, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ichqs"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.105882354, 0.12941177, 0.14901961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ebi5"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.16281992, 0.19434309, 0.22061917, 1)
+border_color = Color(0.22385627, 0.37126064, 0.4139237, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jn5wj"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.12428222, 0.1504266, 0.17221496, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vfle"]
+bg_color = Color(0.087856196, 0.24255013, 0.3780055, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7b1v"]
+bg_color = Color(0.12662202, 0.31813857, 0.4857673, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4wsa"]
+bg_color = Color(0.3787986, 0.33672976, 0.12584034, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr2do"]
+bg_color = Color(0.51922464, 0.46427256, 0.18678367, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1sao"]
+bg_color = Color(0.041973047, 0.31067756, 0.14442775, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v43j"]
+bg_color = Color(0.07399201, 0.43192944, 0.21154603, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_s7cfy"]
+color = Color(0.6039216, 0.5294118, 0.3372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u82b"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+bg_color = Color(0.14117648, 0.1764706, 0.2, 0.7372549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcdtc"]
+bg_color = Color(0.31764707, 0.36862746, 0.38431373, 0.654902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3sdbp"]
+bg_color = Color(0.26962942, 0.31515634, 0.3291582, 0.654902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7odum"]
+bg_color = Color(0.38592, 0.44334066, 0.46102375, 0.654902)
+
+[node name="Control" type="Control" unique_id=197754606 node_paths=PackedStringArray("_taxButton", "_taxWindow", "_contractButton", "_contractWindow")]
+custom_minimum_size = Vector2(850, 500)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_x7jl3")
+script = ExtResource("2_6ebi5")
+_taxButton = NodePath("HBoxContainer/Tabs/Taxes")
+_taxWindow = NodePath("HBoxContainer/OutdrawWindow/Content/TaxWindow")
+_contractButton = NodePath("HBoxContainer/Tabs/Contracts")
+_contractWindow = NodePath("HBoxContainer/OutdrawWindow/Content/ContractsWindow")
+
+[node name="bg" type="TextureRect" parent="." unique_id=303192368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_83fg3")
+
+[node name="Gerb" type="TextureRect" parent="." unique_id=2059077879]
+modulate = Color(1, 1, 1, 0.22745098)
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("1_ejyun")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1980898387]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="Tabs" type="VBoxContainer" parent="HBoxContainer" unique_id=593293499]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Taxes" type="Button" parent="HBoxContainer/Tabs" unique_id=1198631417]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
+theme_override_fonts/font = ExtResource("1_gach8")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_83fg3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
+text = "TAXES"
+
+[node name="Guilhall" type="Button" parent="HBoxContainer/Tabs" unique_id=476837339]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
+theme_override_fonts/font = ExtResource("1_gach8")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_83fg3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
+text = "GUILD HALL"
+
+[node name="Contracts" type="Button" parent="HBoxContainer/Tabs" unique_id=1570730579]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
+theme_override_fonts/font = ExtResource("1_gach8")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_83fg3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
+text = "CONTRACTS"
+
+[node name="Treasury" type="Button" parent="HBoxContainer/Tabs" unique_id=1803897671]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
+theme_override_fonts/font = ExtResource("1_gach8")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_83fg3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
+text = "TREASURY"
+
+[node name="Lands" type="Button" parent="HBoxContainer/Tabs" unique_id=519563262]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
+theme_override_fonts/font = ExtResource("1_gach8")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_83fg3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
+text = "LANDS"
+
+[node name="City" type="Button" parent="HBoxContainer/Tabs" unique_id=530589196]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7752594, 0.80516493, 0.6904431, 1)
+theme_override_fonts/font = ExtResource("1_gach8")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_83fg3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gach8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ejyun")
+text = "CITY"
+
+[node name="OutdrawWindow" type="PanelContainer" parent="HBoxContainer" unique_id=1702654569]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dgph8")
+
+[node name="Content" type="MarginContainer" parent="HBoxContainer/OutdrawWindow" unique_id=825768288]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="TaxWindow" type="Control" parent="HBoxContainer/OutdrawWindow/Content" unique_id=1270295511]
+visible = false
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow" unique_id=367258922]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="TitleBox" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content" unique_id=1611969571]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/TitleBox" unique_id=370582298]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.34113702, 0.6121254, 0.8891779, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 26
+text = "TAX CATEGORY"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/TitleBox" unique_id=1597415434]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ichqs")
+
+[node name="Types" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content" unique_id=365421322]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 15
+
+[node name="Market" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types" unique_id=1357005957]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="name" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/Market" unique_id=1343155641]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 20
+text = "Market"
+
+[node name="MarketBox" type="SpinBox" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/Market" unique_id=273373350]
+layout_mode = 2
+theme_override_styles/up_background = SubResource("StyleBoxFlat_cvnqq")
+theme_override_styles/up_background_hovered = SubResource("StyleBoxFlat_x7jl3")
+theme_override_styles/up_background_pressed = SubResource("StyleBoxFlat_25nrq")
+theme_override_styles/down_background = SubResource("StyleBoxFlat_4hmhi")
+theme_override_styles/down_background_hovered = SubResource("StyleBoxFlat_s7cfy")
+theme_override_styles/down_background_pressed = SubResource("StyleBoxFlat_jgymv")
+step = 0.1
+value = 2.0
+alignment = 1
+update_on_text_changed = true
+suffix = "%"
+
+[node name="PlotBuy" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types" unique_id=828648813]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="name" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotBuy" unique_id=598764012]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 20
+text = "PLOT PURCHASE TAX"
+
+[node name="SteadBox" type="SpinBox" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotBuy" unique_id=346621128]
+layout_mode = 2
+theme_override_styles/up_background = SubResource("StyleBoxFlat_cvnqq")
+theme_override_styles/up_background_hovered = SubResource("StyleBoxFlat_x7jl3")
+theme_override_styles/up_background_pressed = SubResource("StyleBoxFlat_25nrq")
+theme_override_styles/down_background = SubResource("StyleBoxFlat_4hmhi")
+theme_override_styles/down_background_hovered = SubResource("StyleBoxFlat_s7cfy")
+theme_override_styles/down_background_pressed = SubResource("StyleBoxFlat_jgymv")
+step = 0.1
+value = 10.0
+alignment = 1
+update_on_text_changed = true
+suffix = "%"
+
+[node name="PlotRentTax" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types" unique_id=586647671]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="PlotPercent" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax" unique_id=425094592]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="name" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotPercent" unique_id=1675764663]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 20
+text = "PLOT RENT"
+
+[node name="SteadBox" type="SpinBox" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotPercent" unique_id=379369781]
+layout_mode = 2
+theme_override_styles/up_background = SubResource("StyleBoxFlat_cvnqq")
+theme_override_styles/up_background_hovered = SubResource("StyleBoxFlat_x7jl3")
+theme_override_styles/up_background_pressed = SubResource("StyleBoxFlat_25nrq")
+theme_override_styles/down_background = SubResource("StyleBoxFlat_4hmhi")
+theme_override_styles/down_background_hovered = SubResource("StyleBoxFlat_s7cfy")
+theme_override_styles/down_background_pressed = SubResource("StyleBoxFlat_jgymv")
+step = 0.1
+value = 5.0
+alignment = 1
+update_on_text_changed = true
+suffix = "%"
+
+[node name="PlotFix" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax" unique_id=1724909952]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="name" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotFix" unique_id=1829169822]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 20
+text = "PLOT FIXED"
+
+[node name="SteadBox" type="SpinBox" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Types/PlotRentTax/PlotFix" unique_id=1431490966]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/up_background = SubResource("StyleBoxFlat_cvnqq")
+theme_override_styles/up_background_hovered = SubResource("StyleBoxFlat_x7jl3")
+theme_override_styles/up_background_pressed = SubResource("StyleBoxFlat_25nrq")
+theme_override_styles/down_background = SubResource("StyleBoxFlat_4hmhi")
+theme_override_styles/down_background_hovered = SubResource("StyleBoxFlat_s7cfy")
+theme_override_styles/down_background_pressed = SubResource("StyleBoxFlat_jgymv")
+min_value = 1.0
+max_value = 10000000.0
+value = 5.0
+alignment = 1
+update_on_text_changed = true
+suffix = "silver"
+
+[node name="DetailedStatTitle" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content" unique_id=483788578]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 25
+
+[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/DetailedStatTitle" unique_id=523808502]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.16159528, 0.41158748, 0.6550299, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 26
+text = "DETAILED STATISTICS"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/DetailedStatTitle" unique_id=1796414463]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("5_4hmhi")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_ichqs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ebi5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jn5wj")
+alignment = 1
+item_count = 4
+popup/item_0/text = "Last Day"
+popup/item_0/id = 0
+popup/item_1/text = "Last Three Days"
+popup/item_1/id = 1
+popup/item_2/text = "Last Week"
+popup/item_2/id = 2
+popup/item_3/text = "Last Mount"
+popup/item_3/id = 3
+
+[node name="Stat" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content" unique_id=1626552802]
+layout_mode = 2
+
+[node name="marketTax" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1513180859]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/marketTax" unique_id=1487042422]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 15
+text = "Market tax"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/marketTax" unique_id=1099226630]
+custom_minimum_size = Vector2(350, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_styles/background = SubResource("StyleBoxFlat_0vfle")
+theme_override_styles/fill = SubResource("StyleBoxFlat_j7b1v")
+value = 35.0
+show_percentage = false
+
+[node name="SilverCount" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/marketTax" unique_id=355877186]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 15
+text = "1,050 (35%)"
+
+[node name="PlotPurchase" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1511569408]
+layout_mode = 2
+theme_override_constants/separation = 26
+
+[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotPurchase" unique_id=449022345]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 15
+text = "Plot Buy"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotPurchase" unique_id=2085320647]
+custom_minimum_size = Vector2(350, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_styles/background = SubResource("StyleBoxFlat_f4wsa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vr2do")
+value = 50.0
+show_percentage = false
+
+[node name="SilverCount" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotPurchase" unique_id=682364982]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 15
+text = "1,500 (50%)"
+
+[node name="PlotRent" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1060782927]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotRent" unique_id=1439343628]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 15
+text = "Plot Rent"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotRent" unique_id=1683955665]
+custom_minimum_size = Vector2(350, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_styles/background = SubResource("StyleBoxFlat_p1sao")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8v43j")
+value = 15.0
+show_percentage = false
+
+[node name="SilverCount" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/PlotRent" unique_id=2038329862]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76377803, 0.8423848, 0.8849512, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 15
+text = "450 (15%)"
+
+[node name="Total" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat" unique_id=1422148908]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/Total" unique_id=807181491]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58407605, 0.64181954, 0.7851287, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 17
+text = "Total Revenue: "
+
+[node name="Count" type="Label" parent="HBoxContainer/OutdrawWindow/Content/TaxWindow/Content/Stat/Total" unique_id=1047835775]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.58407605, 0.64181954, 0.7851287, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 17
+text = "3,000"
+
+[node name="ContractsWindow" type="Control" parent="HBoxContainer/OutdrawWindow/Content" unique_id=979186598]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow" unique_id=1885406765]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="TitleBox" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer" unique_id=761254970]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/TitleBox" unique_id=546340475]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7869162, 0.6602327, 0.37106386, 1)
+theme_override_fonts/font = ExtResource("3_cvnqq")
+theme_override_font_sizes/font_size = 26
+text = "CREATE ROYAL CONTRACT"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/TitleBox" unique_id=1033598177]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_s7cfy")
+
+[node name="Description" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/TitleBox" unique_id=1083097915]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.34453753, 0.39915428, 0.48646492, 1)
+theme_override_fonts/font = ExtResource("6_25nrq")
+theme_override_font_sizes/font_size = 12
+text = "Royal Contracts allow the ruler to balance the economy, attract new players, or artificially manipulate the market."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="DetailPanel" type="PanelContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer" unique_id=953139883]
+custom_minimum_size = Vector2(0, 230)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_6u82b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel" unique_id=416565795]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Type" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer" unique_id=1629767571]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type" unique_id=817417814]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.70395577, 0.784935, 0.78366435, 1)
+theme_override_fonts/font = ExtResource("7_s7cfy")
+theme_override_font_sizes/font_size = 18
+text = "SELECT CONTRACT TYPE"
+
+[node name="Category" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type" unique_id=1601870332]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="Res" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category" unique_id=1491193742]
+layout_mode = 2
+
+[node name="Res" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Res" unique_id=96404769]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.70395577, 0.784935, 0.78366435, 1)
+theme_override_fonts/font = ExtResource("7_s7cfy")
+theme_override_font_sizes/font_size = 12
+text = "Resource"
+
+[node name="ResourceBox" type="CheckBox" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Res" unique_id=1005654731]
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+button_pressed = true
+button_group = ExtResource("8_jgymv")
+
+[node name="Hunt" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category" unique_id=473390026]
+layout_mode = 2
+
+[node name="Res2" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Hunt" unique_id=2054827097]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.70395577, 0.784935, 0.78366435, 1)
+theme_override_fonts/font = ExtResource("7_s7cfy")
+theme_override_font_sizes/font_size = 12
+text = "Hunting"
+
+[node name="ResourceBox2" type="CheckBox" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Type/Category/Hunt" unique_id=115955068]
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+button_group = ExtResource("8_jgymv")
+
+[node name="Content" type="HBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer" unique_id=2104377776]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Name" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content" unique_id=346900880]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Name" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Name" unique_id=1612658608]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.70395577, 0.784935, 0.78366435, 1)
+theme_override_fonts/font = ExtResource("7_s7cfy")
+theme_override_font_sizes/font_size = 14
+text = "Resource Name"
+
+[node name="Type" type="OptionButton" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Name" unique_id=1677541499]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_vcdtc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3sdbp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7odum")
+alignment = 1
+item_count = 2
+popup/item_0/text = "Iron Ore"
+popup/item_0/id = 0
+popup/item_1/text = "Wolf Skin"
+popup/item_1/id = 1
+
+[node name="Tier" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content" unique_id=1228372597]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Tier" unique_id=531504438]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.70395577, 0.784935, 0.78366435, 1)
+theme_override_fonts/font = ExtResource("7_s7cfy")
+theme_override_font_sizes/font_size = 14
+text = "Quality"
+
+[node name="Type" type="OptionButton" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Tier" unique_id=2026774801]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_vcdtc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3sdbp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7odum")
+alignment = 1
+item_count = 8
+popup/item_0/text = "Horrible"
+popup/item_0/id = 0
+popup/item_1/text = "Bad"
+popup/item_1/id = 1
+popup/item_2/text = "Below Normal"
+popup/item_2/id = 2
+popup/item_3/text = "Normal"
+popup/item_3/id = 3
+popup/item_4/text = "Good"
+popup/item_4/id = 4
+popup/item_5/text = "Great"
+popup/item_5/id = 5
+popup/item_6/text = "Excellent"
+popup/item_6/id = 6
+popup/item_7/text = "Primordial"
+popup/item_7/id = 7
+
+[node name="Count" type="VBoxContainer" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content" unique_id=1543511562]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Count" unique_id=1998191864]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.70395577, 0.784935, 0.78366435, 1)
+theme_override_fonts/font = ExtResource("7_s7cfy")
+theme_override_font_sizes/font_size = 14
+text = "Count"
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Content/Count" unique_id=1093560531]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+placeholder_text = "0"
+alignment = 1
+max_length = 6
