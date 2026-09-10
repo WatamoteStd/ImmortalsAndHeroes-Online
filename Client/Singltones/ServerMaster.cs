@@ -370,6 +370,16 @@ public partial class ServerMaster : Node
 		_socket.Send(buffer[..length]);
 
 	}
+	public void Settlement_CreateRoyalContract(C2S_RoyalContractCreateRequestPacket packet)
+	{
+		
+		Span<byte> buffer = stackalloc byte[128];
+		int length = PacketSerialier.Serialize<C2S_RoyalContractCreateRequestPacket>(buffer, PacketTypes.C2S_RoyalContractCreateRequest, packet);
+		_socket.Send(buffer[..length]);
+
+	}
+
+
 
 	#endregion
 

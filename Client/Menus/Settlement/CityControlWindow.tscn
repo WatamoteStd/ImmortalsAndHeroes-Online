@@ -657,7 +657,7 @@ theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 17
 text = "3,000"
 
-[node name="ContractsWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=979186598 node_paths=PackedStringArray("_totalPriceLabel", "_countEdit", "_costEdit", "_isTaxFreeBox", "_taxEdit")]
+[node name="ContractsWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=979186598 node_paths=PackedStringArray("_totalPriceLabel", "_countEdit", "_costEdit", "_isTaxFreeBox", "_taxEdit", "_resourceId", "_resourseQualityId", "_pplCheckBox", "_pplSpinBox", "_createContractButton")]
 layout_mode = 2
 script = ExtResource("7_vr2do")
 _totalPriceLabel = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/TotalPrice/Silver/Count")
@@ -665,6 +665,11 @@ _countEdit = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/Co
 _costEdit = NodePath("VBoxContainer/DetailPanel/VBoxContainer/SilverTab/Cost/Price")
 _isTaxFreeBox = NodePath("VBoxContainer/DetailPanel/VBoxContainer/SilverTab/IsTax/CheckBox")
 _taxEdit = NodePath("VBoxContainer/DetailPanel/VBoxContainer/SilverTab/TaxFee/Price")
+_resourceId = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/Name/Type")
+_resourseQualityId = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/Tier/Type")
+_pplCheckBox = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Bottom/PlayerLimit/IsLimit/CheckBox")
+_pplSpinBox = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Bottom/PlayerLimit/TaxFee/Price")
+_createContractButton = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/TotalPrice/Button")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow" unique_id=1885406765]
 layout_mode = 1
@@ -796,11 +801,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_vcdtc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3sdbp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7odum")
 alignment = 1
+selected = 0
 item_count = 2
 popup/item_0/text = "Iron Ore"
-popup/item_0/id = 0
+popup/item_0/id = 1000001
 popup/item_1/text = "Wolf Skin"
-popup/item_1/id = 1
+popup/item_1/id = 1000009
 
 [node name="Tier" type="VBoxContainer" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Resource&Price" unique_id=1228372597]
 layout_mode = 2
@@ -823,6 +829,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_vcdtc")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3sdbp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7odum")
 alignment = 1
+selected = 0
 item_count = 8
 popup/item_0/text = "Horrible"
 popup/item_0/id = 0

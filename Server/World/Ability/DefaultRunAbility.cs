@@ -21,7 +21,7 @@ public class DefaultRunAbility : AbilityBase
     public override void OnApply(LivingEntity caster, Vector3? targetPos, LivingEntity? targetEntity, WorldZone region)
     {
         
-        var effect = new StatModifierEffect(StatType.MoveSpeed, 3, DllData.Duration, StatusEffect.StatModifier);
+        var effect = new StatModifierEffect(StatType.MoveSpeed, 12, DllData.Duration, StatusEffect.StatModifier);
         caster.ApplyStatusEffect(effect, caster);
         CurrentCooldown = DllData.Cooldown;
 

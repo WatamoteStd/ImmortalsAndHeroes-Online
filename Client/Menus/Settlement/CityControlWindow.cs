@@ -39,6 +39,7 @@ public partial class CityControlWindow : Control
 		{
 			window.Visible = false;
 		}
+		
 
 	}
 

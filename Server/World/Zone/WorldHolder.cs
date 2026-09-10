@@ -238,6 +238,27 @@ public class WorldHolder : IWorldHolder
                     }
                 break;
 
+                case PacketTypes.C2S_RoyalContractCreateRequest:
+                    {
+                        
+                        var packet = PacketSerialier.Deserialize<C2S_RoyalContractCreateRequestPacket>(cmd.Data[2..]);
+                        if (idToPlayer.TryGetValue(cmd.Session.UserId, out var player) && idToZone.TryGetValue(player.RegionId, out var zone))
+                        {
+                            
+                            if (zone.Settlement is CitySettlement city)
+                            {
+                                
+                                city.CreateRoyalContract(packet, player);
+
+                            }
+
+                        }
+
+                        ArrayPool<byte>.Shared.Return(cmd.Data);
+
+                    }
+                break;
+
             }
 
         }
