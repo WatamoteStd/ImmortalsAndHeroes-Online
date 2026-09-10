@@ -280,6 +280,11 @@ public partial class ServerMaster : Node
 					GameSession.Instance.UpdateSilver(sPck.TotalSilver);
 				}
 			break;
+			case S2C_TreasureUpdatePacket tPckg:
+				{
+					SceneManager.Instance.SettlementManageWindow.Treasure_ServerAnswer(tPckg);
+				}
+			break;
 
 		}
 

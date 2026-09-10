@@ -9,9 +9,11 @@ public partial class TreasuryWindow : Control
 	[Export] private Button _withdrawButton;
 	[Export] private Button _depositButton;
 	[Export] private LineEdit _amountEdit;
-
+	[Export] private Label _serverAnswerLabel;
 	public override void _Ready()
 	{
+
+		_serverAnswerLabel.Visible = false;
 		
 		_withdrawButton.Pressed += () =>
 		{
@@ -41,7 +43,34 @@ public partial class TreasuryWindow : Control
 		};
 		ServerMaster.Instance.Settlement_TreasuryRequest(packet);
 		_amountEdit.Text = "0";
+		_serverAnswerLabel.Visible = false;
+		
+		_withdrawButton.Disabled = true;
+		_depositButton.Disabled = true;
 
+
+	}
+
+	public void ServerAnswerReceived(S2C_TreasureUpdatePacket packet)
+	{
+		
+		_withdrawButton.Disabled = false;
+		_depositButton.Disabled = false;
+
+		_currentBalance.Text = packet.Amount.ToString();
+
+		if (packet.Success)
+		{
+			_serverAnswerLabel.Text = "Success!";
+			_serverAnswerLabel.SelfModulate = Colors.ForestGreen;
+		}
+		else
+		{
+			_serverAnswerLabel.Text = "Failed!";
+			_serverAnswerLabel.SelfModulate = Colors.PaleVioletRed;
+		}
+		_serverAnswerLabel.Visible = true;
+		
 
 	}
 

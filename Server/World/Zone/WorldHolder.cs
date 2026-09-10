@@ -198,9 +198,16 @@ public class WorldHolder : IWorldHolder
                                 {
                                     
                                     bool isSuc = zone.Settlement.TryRemoveSilver(packet.Amount);
-                                    if (isSuc) player.ChangeSilver((int)packet.Amount);
+                                    if (isSuc)
+                                    {
+                                        player.ChangeSilver((int)packet.Amount);
+                                    }
+                                    
+                                    var newPacket = new S2C_TreasureUpdatePacket {Amount = zone.Settlement.Silver, Success = isSuc};
+                                        Broadcaster.SendToPlayer<S2C_TreasureUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureUpdate, newPacket);
                                     Console.WriteLine($"[WorldHolder] Withdraw action by player:{player.Name} is:{isSuc} Current silver of {zone.Settlement.Name}:{zone.Settlement.Silver}");
 
+                                    
                                 }
                                 if (packet.ActionType == C2S_TreasuryActionPacket.TreasuryActionType.Deposit)
                                 {
@@ -209,12 +216,17 @@ public class WorldHolder : IWorldHolder
                                         
                                         zone.Settlement.AddSilver(packet.Amount);
                                         player.ChangeSilver(-(int)packet.Amount);
-                                        Console.WriteLine($"[WorldHolder] Withdraw action by player:{player.Name} success! Current silver of {zone.Settlement.Name}:{zone.Settlement.Silver}");
+
+                                        Console.WriteLine($"[WorldHolder] Deposit action by player:{player.Name} success! Current silver of {zone.Settlement.Name}:{zone.Settlement.Silver}");
+                                        var newPacket = new S2C_TreasureUpdatePacket {Amount = zone.Settlement.Silver, Success = true};
+                                        Broadcaster.SendToPlayer<S2C_TreasureUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureUpdate, newPacket);
 
                                     }
                                     else
                                     {
-                                        Console.WriteLine($"[WorldHolder] Withdraw action by player:{player.Name} blocked! Not enought silver");
+                                        Console.WriteLine($"[WorldHolder] Deposit action by player:{player.Name} blocked! Not enought silver");
+                                        var newPacket = new S2C_TreasureUpdatePacket {Amount = zone.Settlement.Silver, Success = false};
+                                        Broadcaster.SendToPlayer<S2C_TreasureUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureUpdate, newPacket);
                                     }
                         
                                 }

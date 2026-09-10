@@ -13,6 +13,7 @@ using Shared.Udp.Packets.Category.Game;
 using Shared.Udp.Packets.Category.Game.Ability;
 using Shared.Udp.Packets.Category.Game.Projectile;
 using Shared.Udp.Packets.Category.MasteryTree;
+using Shared.Udp.Packets.Category.Settlement;
 
 
 namespace Client.NO_NODE;
@@ -214,7 +215,14 @@ public class PacketReaderClient
                     break;
                     case PacketTypes.S2C_SilverChanged:
                         {
-                             var packet = PacketSerialier.Deserialize<S2C_SilverChangedPacket>(payload);
+                            var packet = PacketSerialier.Deserialize<S2C_SilverChangedPacket>(payload);
+                            _networkPackets.Enqueue(packet);
+                        }
+                    break;
+
+                    case PacketTypes.S2C_TreasureUpdate:
+                        {
+                            var packet = PacketSerialier.Deserialize<S2C_TreasureUpdatePacket>(payload);
                             _networkPackets.Enqueue(packet);
                         }
                     break;

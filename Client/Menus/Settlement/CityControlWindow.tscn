@@ -19,7 +19,7 @@
 [ext_resource type="FontFile" uid="uid://hcrriv77m3rl" path="res://Assets/Fonts/Inter/static/Inter_24pt-LightItalic.ttf" id="16_3sdbp"]
 
 [sub_resource type="Gradient" id="Gradient_dgph8"]
-colors = PackedColorArray(0.14342147, 0.18090776, 0.2099526, 0.89411765, 0.2724937, 0.32410726, 0.35953224, 1)
+colors = PackedColorArray(0.14509805, 0.18039216, 0.21176471, 1, 0.2724937, 0.32410726, 0.35953224, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_83fg3"]
 gradient = SubResource("Gradient_dgph8")
@@ -259,6 +259,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -425.0
+offset_top = -250.0
+offset_right = 425.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_x7jl3")
@@ -654,7 +658,6 @@ theme_override_font_sizes/font_size = 17
 text = "3,000"
 
 [node name="ContractsWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=979186598 node_paths=PackedStringArray("_totalPriceLabel", "_countEdit", "_costEdit", "_isTaxFreeBox", "_taxEdit")]
-visible = false
 layout_mode = 2
 script = ExtResource("7_vr2do")
 _totalPriceLabel = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/TotalPrice/Silver/Count")
@@ -996,7 +999,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.46274197, 0.642012, 0.2953427, 1)
+theme_override_colors/font_color = Color(0.6181097, 0.8302281, 0.4268219, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 20
 text = "PER PLAYER LIMIT"
@@ -1004,7 +1007,7 @@ text = "PER PLAYER LIMIT"
 [node name="Description" type="Label" parent="Content/OutdrawWindow/Content/ContractsWindow/VBoxContainer/DetailPanel/VBoxContainer/Bottom" unique_id=262807929]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.38700908, 0.54380697, 0.23936701, 1)
+theme_override_colors/font_color = Color(0.5368328, 0.7363706, 0.3508704, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 12
 text = "Per-Player Quota (Limit): Restrict the maximum amount of resources a single player can deliver. Enable this to distribute rewards among many players and attract newcomers to your city."
@@ -1064,13 +1067,15 @@ theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 14
 text = "Enabled"
 
-[node name="TreasuryWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=1235523101 node_paths=PackedStringArray("_currentBalance", "_withdrawButton", "_depositButton", "_amountEdit")]
+[node name="TreasuryWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=1235523101 node_paths=PackedStringArray("_currentBalance", "_withdrawButton", "_depositButton", "_amountEdit", "_serverAnswerLabel")]
+visible = false
 layout_mode = 2
 script = ExtResource("15_3sdbp")
 _currentBalance = NodePath("Content/Balance/Silver/SilverBox/Silver")
 _withdrawButton = NodePath("Content/Balance/Actions/Witdhraw")
 _depositButton = NodePath("Content/Balance/Actions/Deposit")
 _amountEdit = NodePath("Content/Balance/Amount")
+_serverAnswerLabel = NodePath("Content/AsnwerFromServer")
 
 [node name="Content" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow" unique_id=1549018160]
 layout_mode = 1
@@ -1175,3 +1180,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_f8nnt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_eyxuw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_88c5b")
 text = "Witdhraw"
+
+[node name="AsnwerFromServer" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content" unique_id=491129219]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 18
+text = "SUCCES!"

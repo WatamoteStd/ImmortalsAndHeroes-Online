@@ -1,4 +1,5 @@
 using Godot;
+using Shared.Udp.Packets.Category.Settlement;
 using System;
 using System.Collections.Generic;
 
@@ -61,5 +62,10 @@ public partial class CityControlWindow : Control
 
 	}
 
+	public void Treasure_ServerAnswer(S2C_TreasureUpdatePacket packet)
+	{
+		_treasuryWindow.ServerAnswerReceived(packet);
+	}
+ 
 
 }

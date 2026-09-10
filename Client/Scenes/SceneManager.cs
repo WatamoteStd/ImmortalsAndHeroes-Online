@@ -84,6 +84,8 @@ public partial class SceneManager : CanvasLayer
 			MasteryTreeWindow.Visible = false;
 			MarketManagerWindow.Visible = false;
 
+			ShowHud();
+
 		}
 	}
 
@@ -177,5 +179,6 @@ public partial class SceneManager : CanvasLayer
 	public void SwitchVisiblitySettlementManage()
 	{
 		SettlementManageWindow.Visible = !SettlementManageWindow.Visible;
+		HideHud();
 	}
 }
