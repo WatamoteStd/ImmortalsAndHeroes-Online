@@ -390,7 +390,6 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 5
 
 [node name="TaxWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=1270295511]
-visible = false
 layout_mode = 2
 
 [node name="Content" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow" unique_id=367258922]
@@ -658,6 +657,7 @@ theme_override_font_sizes/font_size = 17
 text = "3,000"
 
 [node name="ContractsWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=979186598 node_paths=PackedStringArray("_totalPriceLabel", "_countEdit", "_costEdit", "_isTaxFreeBox", "_taxEdit", "_resourceId", "_resourseQualityId", "_pplCheckBox", "_pplSpinBox", "_createContractButton")]
+visible = false
 layout_mode = 2
 script = ExtResource("7_vr2do")
 _totalPriceLabel = NodePath("VBoxContainer/DetailPanel/VBoxContainer/Resource&Price/TotalPrice/Silver/Count")

@@ -1,5 +1,6 @@
 using Server.World.Zone.Settlement.Options;
 using Shared.Udp.Packets.Category.Settlement;
+using Server.World.Zone.Settlement.Components;
 
 namespace Server.World.Zone.Settlement;
 
@@ -19,6 +20,27 @@ public class CitySettlement : BaseSettlement
     {
         
         if (royalContract != null) return;
+
+        ulong totalCost;
+        try
+        {
+            checked
+            {
+                totalCost = (ulong)contractPacket.TotalCount * (ulong)contractPacket.PricePerUnit;
+            }
+        }
+        catch(OverflowException)
+        {
+            Console.WriteLine($"[City:{Name}] RoyalContract creation failed: total cost overflow.");
+            return;
+        }
+        bool isSus = TryRemoveSilver(totalCost, player, TreasuryActionType.ContractRecerve);
+
+        if (!isSus)
+        {
+            Console.WriteLine($"[City:{Name}] RoyalContract request denied. Not enought silver.");
+            return;
+        }
 
         royalContract = new RoyalContract()
         {

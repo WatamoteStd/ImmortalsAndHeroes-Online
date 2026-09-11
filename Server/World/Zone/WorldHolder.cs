@@ -47,6 +47,14 @@ public class WorldHolder : IWorldHolder
         // SETTLEMENTS ==============================================
         CapitalSettlement chershia = new CapitalSettlement(1, "Chershia");
         CitySettlement hiacher = new CitySettlement(2, "Hiacher", chershia);
+        hiacher.OnTreasuryUpdate += (packet) =>
+        {
+
+            foreach(var player in idToPlayer.Values)
+            {
+                Broadcaster.SendToPlayer<S2C_TreasureUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureUpdate, packet);
+            }
+        };
         VillageSettlement cesi = new VillageSettlement(3, "Cesi", hiacher);
 
         idToSettlement[chershia.Id] = chershia;
@@ -194,42 +202,16 @@ public class WorldHolder : IWorldHolder
                             
                             if (zone.Settlement != null)
                             {
-                                if (packet.ActionType == C2S_TreasuryActionPacket.TreasuryActionType.Withdraw)
+
+                                _ = packet.ActionType switch
                                 {
                                     
-                                    bool isSuc = zone.Settlement.TryRemoveSilver(packet.Amount);
-                                    if (isSuc)
-                                    {
-                                        player.ChangeSilver((int)packet.Amount);
-                                    }
-                                    
-                                    var newPacket = new S2C_TreasureUpdatePacket {Amount = zone.Settlement.Silver, Success = isSuc};
-                                        Broadcaster.SendToPlayer<S2C_TreasureUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureUpdate, newPacket);
-                                    Console.WriteLine($"[WorldHolder] Withdraw action by player:{player.Name} is:{isSuc} Current silver of {zone.Settlement.Name}:{zone.Settlement.Silver}");
+                                    C2S_TreasuryActionPacket.TreasuryActionType.Withdraw => zone.Settlement.TryWithdrawByPlayer(player, packet.Amount),
+                                    C2S_TreasuryActionPacket.TreasuryActionType.Deposit => zone.Settlement.TryDepositByPlayer(player, packet.Amount),
+                                    _ => false
 
-                                    
-                                }
-                                if (packet.ActionType == C2S_TreasuryActionPacket.TreasuryActionType.Deposit)
-                                {
-                                    if (player.Silver >= (int)packet.Amount)
-                                    {
-                                        
-                                        zone.Settlement.AddSilver(packet.Amount);
-                                        player.ChangeSilver(-(int)packet.Amount);
+                                };
 
-                                        Console.WriteLine($"[WorldHolder] Deposit action by player:{player.Name} success! Current silver of {zone.Settlement.Name}:{zone.Settlement.Silver}");
-                                        var newPacket = new S2C_TreasureUpdatePacket {Amount = zone.Settlement.Silver, Success = true};
-                                        Broadcaster.SendToPlayer<S2C_TreasureUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureUpdate, newPacket);
-
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine($"[WorldHolder] Deposit action by player:{player.Name} blocked! Not enought silver");
-                                        var newPacket = new S2C_TreasureUpdatePacket {Amount = zone.Settlement.Silver, Success = false};
-                                        Broadcaster.SendToPlayer<S2C_TreasureUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureUpdate, newPacket);
-                                    }
-                        
-                                }
                             }
 
                         }
@@ -240,22 +222,16 @@ public class WorldHolder : IWorldHolder
 
                 case PacketTypes.C2S_RoyalContractCreateRequest:
                     {
-                        
                         var packet = PacketSerialier.Deserialize<C2S_RoyalContractCreateRequestPacket>(cmd.Data[2..]);
                         if (idToPlayer.TryGetValue(cmd.Session.UserId, out var player) && idToZone.TryGetValue(player.RegionId, out var zone))
                         {
-                            
                             if (zone.Settlement is CitySettlement city)
                             {
-                                
                                 city.CreateRoyalContract(packet, player);
-
                             }
-
                         }
 
                         ArrayPool<byte>.Shared.Return(cmd.Data);
-
                     }
                 break;
 
