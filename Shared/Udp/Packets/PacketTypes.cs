@@ -35,6 +35,7 @@ public enum PacketTypes : ushort
     C2S_TreasuryAction = 27, // 0 - withdraw | 1 deposit
     S2C_TreasureUpdate = 28,
     C2S_RoyalContractCreateRequest = 29,
+    S2C_TreasureHistoryUpdate = 30
     
 
 }

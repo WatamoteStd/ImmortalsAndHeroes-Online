@@ -7,7 +7,7 @@ namespace Server.World.Zone.Settlement;
 public class BaseSettlement
 {
 
-    public event Action<S2C_TreasureUpdatePacket>? OnTreasuryUpdate;
+    public event Action<S2C_TreasureUpdatePacket, S2C_TreasureHistoryUpdatePacket>? OnTreasuryUpdate;
     
     public enum Types : byte
     {
@@ -29,9 +29,9 @@ public class BaseSettlement
         Id = id;
         Name = name;
 
-        Treasury.OnTreasuryUpdate += (pck) =>
+        Treasury.OnTreasuryUpdate += (pck, hisPck) =>
         {
-            OnTreasuryUpdate?.Invoke(pck);
+            OnTreasuryUpdate?.Invoke(pck, hisPck);
         };
     }
 
@@ -75,8 +75,6 @@ public class BaseSettlement
         else
         {
             Console.WriteLine($"[City:{Name}] Player:{player.Name} try to withdraw:{amount} silver. Operation blocked");
-            var pck = new S2C_TreasureUpdatePacket { Amount = Treasury.Silver, Success = false};
-            OnTreasuryUpdate?.Invoke(pck);
             return false;
         }
 
@@ -84,12 +82,7 @@ public class BaseSettlement
     public bool TryDepositByPlayer(PlayerEntity player, ulong amount)
     {
         
-        if (player.Silver < (int)amount || amount == 0)
-        {
-            var pck = new S2C_TreasureUpdatePacket { Amount = Treasury.Silver, Success = false};
-            OnTreasuryUpdate?.Invoke(pck);
-            return false;
-        }
+        if (player.Silver < (int)amount || amount == 0) return false;
 
         AddSilver(amount, player, TreasuryActionType.PlayerDeposit);
         Console.WriteLine($"[City:{Name}] Player:{player.Name} deposit:{amount} silver. Current silver:{Treasury.Silver}");

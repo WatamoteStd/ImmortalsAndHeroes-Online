@@ -5,7 +5,7 @@ namespace Server.World.Zone.Settlement.Components;
 public class SettlementTreasury
 {
 
-    public event Action<S2C_TreasureUpdatePacket>? OnTreasuryUpdate;
+    public event Action<S2C_TreasureUpdatePacket, S2C_TreasureHistoryUpdatePacket>? OnTreasuryUpdate;
     
     private ulong _silver;
     public ulong Silver
@@ -17,7 +17,18 @@ public class SettlementTreasury
             _silver = value;
         
             var packet = new S2C_TreasureUpdatePacket { Amount = _silver, Success = true };
-            OnTreasuryUpdate?.Invoke(packet);
+
+            int lastIndex = (_freeIndex - 1 + History.Length) % History.Length;
+            var curHis = History[lastIndex];
+            var hisPacket = new S2C_TreasureHistoryUpdatePacket
+            {
+                Timestamp = new DateTimeOffset(curHis.Date).ToUnixTimeMilliseconds(),
+                Name = curHis.Name,
+                Amount = curHis.Amount,
+                ActionType = (C2S_TreasuryActionPacket.TreasuryActionType)curHis.Action
+
+            };
+            OnTreasuryUpdate?.Invoke(packet, hisPacket);
         }
     }
 
@@ -30,12 +41,11 @@ public class SettlementTreasury
 
         if (amount == 0) return;
         
+        RecordHistory(amount, player, action, defaultSystemName: "Tax System");
         checked 
         {
             Silver += amount;
         }
-
-        RecordHistory(amount, player, action, defaultSystemName: "Tax System");
 
     }
 
@@ -44,9 +54,9 @@ public class SettlementTreasury
         
         if (Silver < amount || amount == 0) return false;
 
-        Silver = Silver - amount;
-
         RecordHistory(amount, player, action, defaultSystemName: "Royal Contract");
+
+        Silver = Silver - amount;
 
         return true;
 

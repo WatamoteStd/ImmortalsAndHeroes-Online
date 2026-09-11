@@ -47,12 +47,13 @@ public class WorldHolder : IWorldHolder
         // SETTLEMENTS ==============================================
         CapitalSettlement chershia = new CapitalSettlement(1, "Chershia");
         CitySettlement hiacher = new CitySettlement(2, "Hiacher", chershia);
-        hiacher.OnTreasuryUpdate += (packet) =>
+        hiacher.OnTreasuryUpdate += (packet, hisPacket) =>
         {
 
             foreach(var player in idToPlayer.Values)
             {
                 Broadcaster.SendToPlayer<S2C_TreasureUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureUpdate, packet);
+                Broadcaster.SendToPlayer<S2C_TreasureHistoryUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureHistoryUpdate, hisPacket);
             }
         };
         VillageSettlement cesi = new VillageSettlement(3, "Cesi", hiacher);

@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://xiqb01x5lo4r"]
+
+[ext_resource type="Script" uid="uid://begn60tk1cm8o" path="res://Menus/Settlement/Treasury/TreasureHistoryElement.cs" id="1_clw34"]
+[ext_resource type="FontFile" uid="uid://b16vjnk4by3wd" path="res://Assets/Fonts/Optimus/optimusprinceps.ttf" id="1_u4mnw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4wer"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.09138336, 0.116192676, 0.13603088, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6u82b"]
+color = Color(0.17885092, 0.21977392, 0.25161067, 1)
+
+[node name="HistoryElement" type="PanelContainer" unique_id=361001646 node_paths=PackedStringArray("_name", "_count", "_action", "_time")]
+custom_minimum_size = Vector2(0, 60)
+theme_override_styles/panel = SubResource("StyleBoxFlat_w4wer")
+script = ExtResource("1_clw34")
+_name = NodePath("Content/Body/Name")
+_count = NodePath("Content/Body/Count")
+_action = NodePath("Content/Body/Action")
+_time = NodePath("Content/Body/Time")
+
+[node name="Content" type="VBoxContainer" parent="." unique_id=1904622535]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="Content" unique_id=266131626]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Name" type="Label" parent="Content/Header" unique_id=1643737046]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_u4mnw")
+theme_override_font_sizes/font_size = 12
+text = "NAME"
+
+[node name="Count" type="Label" parent="Content/Header" unique_id=1979227935]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("1_u4mnw")
+theme_override_font_sizes/font_size = 12
+text = "COUNT"
+
+[node name="Time" type="Label" parent="Content/Header" unique_id=210194692]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("1_u4mnw")
+theme_override_font_sizes/font_size = 12
+text = "TIME"
+
+[node name="Action" type="Label" parent="Content/Header" unique_id=1533572799]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 0.24190018, 0.16567382, 1)
+theme_override_fonts/font = ExtResource("1_u4mnw")
+theme_override_font_sizes/font_size = 12
+text = "ACTION"
+
+[node name="HSeparator" type="HSeparator" parent="Content" unique_id=244174885]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_6u82b")
+
+[node name="Body" type="HBoxContainer" parent="Content" unique_id=813135671]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Name" type="Label" parent="Content/Body" unique_id=1453031783]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("1_u4mnw")
+theme_override_font_sizes/font_size = 14
+text = "Null"
+
+[node name="Count" type="Label" parent="Content/Body" unique_id=607959047]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("1_u4mnw")
+theme_override_font_sizes/font_size = 14
+text = "NULL"
+
+[node name="Time" type="Label" parent="Content/Body" unique_id=1804101058]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("1_u4mnw")
+theme_override_font_sizes/font_size = 14
+text = "0:00"
+
+[node name="Action" type="Label" parent="Content/Body" unique_id=878797908]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(1, 0.24190018, 0.16567382, 1)
+theme_override_fonts/font = ExtResource("1_u4mnw")
+theme_override_font_sizes/font_size = 14
+text = "NONE"

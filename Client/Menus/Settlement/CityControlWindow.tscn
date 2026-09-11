@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://g5ofh5w7ewkr" path="res://Menus/Settlement/TreasuryWindow.cs" id="15_3sdbp"]
 [ext_resource type="FontFile" uid="uid://7fublagmhdbs" path="res://Assets/Fonts/Inter/static/Inter_18pt-Medium.ttf" id="15_8v43j"]
 [ext_resource type="FontFile" uid="uid://hcrriv77m3rl" path="res://Assets/Fonts/Inter/static/Inter_24pt-LightItalic.ttf" id="16_3sdbp"]
+[ext_resource type="PackedScene" uid="uid://xiqb01x5lo4r" path="res://Menus/Settlement/Treasury/TreasureHistoryElement.tscn" id="16_7odum"]
 
 [sub_resource type="Gradient" id="Gradient_dgph8"]
 colors = PackedColorArray(0.14509805, 0.18039216, 0.21176471, 1, 0.2724937, 0.32410726, 0.35953224, 1)
@@ -390,6 +391,7 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 5
 
 [node name="TaxWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=1270295511]
+visible = false
 layout_mode = 2
 
 [node name="Content" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TaxWindow" unique_id=367258922]
@@ -1074,30 +1076,38 @@ theme_override_fonts/font = ExtResource("3_cvnqq")
 theme_override_font_sizes/font_size = 14
 text = "Enabled"
 
-[node name="TreasuryWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=1235523101 node_paths=PackedStringArray("_currentBalance", "_withdrawButton", "_depositButton", "_amountEdit", "_serverAnswerLabel")]
-visible = false
+[node name="TreasuryWindow" type="Control" parent="Content/OutdrawWindow/Content" unique_id=1235523101 node_paths=PackedStringArray("_currentBalance", "_withdrawButton", "_depositButton", "_amountEdit", "_serverAnswerLabel", "_historyBox")]
 layout_mode = 2
 script = ExtResource("15_3sdbp")
-_currentBalance = NodePath("Content/Balance/Silver/SilverBox/Silver")
-_withdrawButton = NodePath("Content/Balance/Actions/Witdhraw")
-_depositButton = NodePath("Content/Balance/Actions/Deposit")
-_amountEdit = NodePath("Content/Balance/Amount")
-_serverAnswerLabel = NodePath("Content/AsnwerFromServer")
+_currentBalance = NodePath("ScrollContainer/Content/Balance/Silver/SilverBox/Silver")
+_withdrawButton = NodePath("ScrollContainer/Content/Balance/Actions/Witdhraw")
+_depositButton = NodePath("ScrollContainer/Content/Balance/Actions/Deposit")
+_amountEdit = NodePath("ScrollContainer/Content/Balance/Amount")
+_serverAnswerLabel = NodePath("ScrollContainer/Content/AsnwerFromServer")
+_historyElementScene = ExtResource("16_7odum")
+_historyBox = NodePath("ScrollContainer/Content/History")
 
-[node name="Content" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow" unique_id=1549018160]
+[node name="ScrollContainer" type="ScrollContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow" unique_id=1565059996]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Content" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer" unique_id=1549018160]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 45
 
-[node name="TitleBox" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content" unique_id=976365264]
+[node name="TitleBox" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content" unique_id=976365264]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/TitleBox" unique_id=480362831]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/TitleBox" unique_id=480362831]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4888636, 0.74409634, 0.4172237, 1)
 theme_override_fonts/font = ExtResource("3_cvnqq")
@@ -1105,11 +1115,11 @@ theme_override_font_sizes/font_size = 32
 text = "TREASURY"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/TitleBox" unique_id=998167575]
+[node name="HSeparator" type="HSeparator" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/TitleBox" unique_id=998167575]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_3sdbp")
 
-[node name="Description" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/TitleBox" unique_id=1091954829]
+[node name="Description" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/TitleBox" unique_id=1091954829]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_vertical = 0
@@ -1120,14 +1130,14 @@ text = "Control the treasury of the whole city"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Balance" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content" unique_id=1110446845]
+[node name="Balance" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content" unique_id=1110446845]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Silver" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance" unique_id=940005553]
+[node name="Silver" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/Balance" unique_id=940005553]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Silver" unique_id=305200819]
+[node name="Title" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/Balance/Silver" unique_id=305200819]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.9164068, 0.8617549, 0.8935451, 1)
@@ -1135,12 +1145,12 @@ theme_override_fonts/font = ExtResource("15_8v43j")
 theme_override_font_sizes/font_size = 21
 text = "TOTAL CITY BALANCE"
 
-[node name="SilverBox" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Silver" unique_id=624884089]
+[node name="SilverBox" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/Balance/Silver" unique_id=624884089]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Silver" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Silver/SilverBox" unique_id=262989583]
+[node name="Silver" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/Balance/Silver/SilverBox" unique_id=262989583]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.86575145, 0.89717835, 0.91058767, 1)
@@ -1148,7 +1158,7 @@ theme_override_fonts/font = ExtResource("16_3sdbp")
 theme_override_font_sizes/font_size = 20
 text = "0"
 
-[node name="Sufix" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Silver/SilverBox" unique_id=659474446]
+[node name="Sufix" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/Balance/Silver/SilverBox" unique_id=659474446]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.86575145, 0.89717835, 0.91058767, 1)
@@ -1156,7 +1166,7 @@ theme_override_fonts/font = ExtResource("16_3sdbp")
 theme_override_font_sizes/font_size = 20
 text = "SILVER"
 
-[node name="Amount" type="LineEdit" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance" unique_id=2124425549]
+[node name="Amount" type="LineEdit" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/Balance" unique_id=2124425549]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -1164,11 +1174,11 @@ placeholder_text = "Amount"
 alignment = 1
 max_length = 6
 
-[node name="Actions" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance" unique_id=1472671098]
+[node name="Actions" type="HBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/Balance" unique_id=1472671098]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Deposit" type="Button" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Actions" unique_id=2007866171]
+[node name="Deposit" type="Button" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/Balance/Actions" unique_id=2007866171]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("12_f4wsa")
@@ -1178,7 +1188,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_5wgeg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_y1syv")
 text = "Deposit"
 
-[node name="Witdhraw" type="Button" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content/Balance/Actions" unique_id=1846543888]
+[node name="Witdhraw" type="Button" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content/Balance/Actions" unique_id=1846543888]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("12_f4wsa")
@@ -1188,8 +1198,12 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_eyxuw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_88c5b")
 text = "Witdhraw"
 
-[node name="AsnwerFromServer" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/Content" unique_id=491129219]
+[node name="AsnwerFromServer" type="Label" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content" unique_id=491129219]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 18
 text = "SUCCES!"
+
+[node name="History" type="VBoxContainer" parent="Content/OutdrawWindow/Content/TreasuryWindow/ScrollContainer/Content" unique_id=1789370451]
+layout_mode = 2
+theme_override_constants/separation = 2

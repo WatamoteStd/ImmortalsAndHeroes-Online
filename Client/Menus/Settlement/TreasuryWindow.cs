@@ -10,6 +10,10 @@ public partial class TreasuryWindow : Control
 	[Export] private Button _depositButton;
 	[Export] private LineEdit _amountEdit;
 	[Export] private Label _serverAnswerLabel;
+
+	// HISTORY =======================================
+	[Export] private PackedScene _historyElementScene;
+	[Export] private VBoxContainer _historyBox;
 	public override void _Ready()
 	{
 
@@ -45,8 +49,8 @@ public partial class TreasuryWindow : Control
 		_amountEdit.Text = "0";
 		_serverAnswerLabel.Visible = false;
 		
-		_withdrawButton.Disabled = true;
-		_depositButton.Disabled = true;
+		//_withdrawButton.Disabled = true;
+		//_depositButton.Disabled = true;
 
 
 	}
@@ -71,6 +75,16 @@ public partial class TreasuryWindow : Control
 		}
 		_serverAnswerLabel.Visible = true;
 		
+
+	}
+
+	public void CreateHistoryElement(S2C_TreasureHistoryUpdatePacket packet)
+	{
+		
+		var element = _historyElementScene.Instantiate<TreasureHistoryElement>();
+		_historyBox.AddChild(element);
+		_historyBox.MoveChild(element, 0);
+		element.Initiate(packet);
 
 	}
 

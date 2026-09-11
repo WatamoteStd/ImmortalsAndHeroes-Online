@@ -285,6 +285,11 @@ public partial class ServerMaster : Node
 					SceneManager.Instance.SettlementManageWindow.Treasure_ServerAnswer(tPckg);
 				}
 			break;
+			case S2C_TreasureHistoryUpdatePacket tUpdH:
+				{
+					SceneManager.Instance.SettlementManageWindow.Treasure_HistoryUpdate(tUpdH);
+				}
+			break;
 
 		}
 

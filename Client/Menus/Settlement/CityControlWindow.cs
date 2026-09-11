@@ -67,6 +67,10 @@ public partial class CityControlWindow : Control
 	{
 		_treasuryWindow.ServerAnswerReceived(packet);
 	}
+	public void Treasure_HistoryUpdate(S2C_TreasureHistoryUpdatePacket packet)
+	{
+		_treasuryWindow.CreateHistoryElement(packet);
+	}
  
 
 }
