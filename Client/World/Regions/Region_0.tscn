@@ -13,10 +13,10 @@ albedo_color = Color(0.10421745, 0.2833985, 0.09041683, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_t3xac"]
 material = SubResource("StandardMaterial3D_4152v")
-size = Vector2(300, 300)
+size = Vector2(600, 600)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hjl0q"]
-size = Vector3(300, 0.05, 300)
+size = Vector3(600, 0.05, 600)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6u82b"]
 size = Vector3(1, 5, 2)
@@ -45,7 +45,7 @@ albedo_color = Color(0.3863839, 0.4024678, 0.04164865, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6u82b"]
 material = SubResource("StandardMaterial3D_tqto2")
-size = Vector2(120, 2)
+size = Vector2(280, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm0se"]
 albedo_color = Color(0.14580792, 0.30682528, 0.20073566, 1)
@@ -84,35 +84,35 @@ mesh = SubResource("BoxMesh_83fg3")
 environment = SubResource("Environment_83fg3")
 
 [node name="RoadToCity" type="MeshInstance3D" parent="." unique_id=1918239163]
-transform = Transform3D(0.9999221, 0, 0.01248173, 0, 1, 0, -0.01248173, 0, 0.9999221, -56.57049, 0.01, 0)
+transform = Transform3D(0.9999221, 0, 0.01248173, 0, 1, 0, -0.01248173, 0, 0.9999221, -138.56377, 0.01, 0)
 mesh = SubResource("PlaneMesh_6u82b")
 
 [node name="Walls" type="CSGCombiner3D" parent="." unique_id=1643989351]
 metadata/_edit_lock_ = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Walls" unique_id=1149594944]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 5, 0)
-size = Vector3(3, 10, 300)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -300, 5, 0)
+size = Vector3(3, 10, 600)
 material = SubResource("StandardMaterial3D_qm0se")
 metadata/_edit_lock_ = true
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Walls" unique_id=1082710846]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 5, 0)
-size = Vector3(3, 10, 300)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 300, 5, 0)
+size = Vector3(3, 10, 600)
 material = SubResource("StandardMaterial3D_qm0se")
 metadata/_edit_lock_ = true
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Walls" unique_id=1712956419]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 150)
-size = Vector3(300, 10, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 300)
+size = Vector3(600, 10, 3)
 material = SubResource("StandardMaterial3D_qm0se")
 metadata/_edit_lock_ = true
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Walls" unique_id=303347997]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -150)
-size = Vector3(300, 10, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -300)
+size = Vector3(600, 10, 3)
 material = SubResource("StandardMaterial3D_qm0se")
 metadata/_edit_lock_ = true
 
 [node name="EnterToCity" parent="." unique_id=667303599 instance=ExtResource("4_cfrud")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.59556, 0.55552363, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -290.0566, 0.55552363, 0)
