@@ -1,5 +1,6 @@
 
 using Server.World.Zone.Settlement.Components;
+using Shared.Udp.Packets.Category.Market;
 using Shared.Udp.Packets.Category.Settlement;
 
 namespace Server.World.Zone.Settlement;
@@ -8,6 +9,12 @@ public class BaseSettlement
 {
 
     public event Action<S2C_TreasureUpdatePacket, S2C_TreasureHistoryUpdatePacket>? OnTreasuryUpdate;
+    public event Action<S2C_RoyalContractInfoResponsePacket, uint>? OnRoyalContractInfoResponse; // USER ID!
+
+    public void OnRoyalContractResponseHandler(S2C_RoyalContractInfoResponsePacket packet, uint userId)
+    {
+        OnRoyalContractInfoResponse?.Invoke(packet, userId);
+    }
     
     public enum Types : byte
     {

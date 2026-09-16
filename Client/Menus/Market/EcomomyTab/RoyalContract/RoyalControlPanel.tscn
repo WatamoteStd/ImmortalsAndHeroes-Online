@@ -1,0 +1,255 @@
+[gd_scene format=3 uid="uid://cole6a25or3m7"]
+
+[ext_resource type="Script" uid="uid://ccmh3isis17y1" path="res://Menus/Market/EcomomyTab/RoyalContract/RoyalContract.cs" id="1_csi5x"]
+[ext_resource type="FontFile" uid="uid://b16vjnk4by3wd" path="res://Assets/Fonts/Optimus/optimusprinceps.ttf" id="2_flv6s"]
+[ext_resource type="FontFile" uid="uid://ohuw2em0qnde" path="res://Assets/Fonts/Inter/static/Inter_18pt-LightItalic.ttf" id="3_16ru1"]
+[ext_resource type="Texture2D" uid="uid://bkho5n2sh1w4s" path="res://Assets/temp/thedigitalartist-approved-5254258_640.png" id="3_wv8ao"]
+[ext_resource type="FontFile" uid="uid://7fublagmhdbs" path="res://Assets/Fonts/Inter/static/Inter_18pt-Medium.ttf" id="4_flv6s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jui1a"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.16094226, 0.16618353, 0.2226842, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.09681424, 0.11927041, 0.15080637, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csi5x"]
+bg_color = Color(0.17347434, 0.1466147, 0.27107114, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_83fg3"]
+color = Color(0.7882353, 0.65882355, 0.37254903, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evjer"]
+content_margin_left = 5.0
+content_margin_top = 2.0
+content_margin_right = 5.0
+content_margin_bottom = 2.0
+bg_color = Color(0.124131836, 0.1273948, 0.17651409, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83fg3"]
+content_margin_left = 7.0
+content_margin_top = 7.0
+content_margin_right = 7.0
+content_margin_bottom = 7.0
+bg_color = Color(0.19776687, 0.20234656, 0.27071092, 1)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6u82b"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.21031061, 0.28158855, 0.6482755, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flv6s"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.18979824, 0.2547312, 0.5952373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wv8ao"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.24217528, 0.3202328, 0.71062255, 1)
+
+[node name="RoyalContract" type="PanelContainer" unique_id=936619024 node_paths=PackedStringArray("_itemName", "_itemCount", "_isTaxFree", "_costPerUnit", "_playerLimit", "_timeLeft", "_putItem", "_taxContaienr", "_playerLimitContrainer")]
+custom_minimum_size = Vector2(600, 500)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_jui1a")
+script = ExtResource("1_csi5x")
+_itemName = NodePath("Content/Body/Content/Resourse/Item")
+_itemCount = NodePath("Content/Body/Content/Count/Item")
+_isTaxFree = NodePath("Content/Body/Content/Tax_Optional/Item")
+_costPerUnit = NodePath("Content/Body/Content/Cost/Item")
+_playerLimit = NodePath("Content/Body/Content/PPLimit_Optional/Item")
+_timeLeft = NodePath("Content/TopInfo/TimeLeftContainer/TimeLeft")
+_putItem = NodePath("Content/Body/Content/Button")
+_taxContaienr = NodePath("Content/Body/Content/Tax_Optional")
+_playerLimitContrainer = NodePath("Content/Body/Content/PPLimit_Optional")
+
+[node name="Content" type="VBoxContainer" parent="." unique_id=1829985304]
+layout_mode = 2
+
+[node name="Header" type="PanelContainer" parent="Content" unique_id=1233037524]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_csi5x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Header" unique_id=1859549472]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/Header/VBoxContainer" unique_id=276593455]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.7882353, 0.65882355, 0.37254903, 1)
+theme_override_fonts/font = ExtResource("2_flv6s")
+theme_override_font_sizes/font_size = 31
+text = "ROYAL CONTRACT"
+
+[node name="HSeparator" type="HSeparator" parent="Content/Header/VBoxContainer" unique_id=832026036]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/separator = SubResource("StyleBoxLine_83fg3")
+
+[node name="TopInfo" type="HBoxContainer" parent="Content" unique_id=218767774]
+layout_mode = 2
+
+[node name="OrderDescriptionText" type="Label" parent="Content/TopInfo" unique_id=520361007]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.7653403, 0.63713795, 0.35254195, 1)
+theme_override_fonts/font = ExtResource("3_16ru1")
+theme_override_font_sizes/font_size = 18
+text = "ORDER INFORMATION"
+
+[node name="TimeLeftContainer" type="HBoxContainer" parent="Content/TopInfo" unique_id=1769713665]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Prefix" type="Label" parent="Content/TopInfo/TimeLeftContainer" unique_id=550597988]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.2745435, 0.36139283, 0.7681424, 1)
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_evjer")
+text = "TIME LEFT:"
+
+[node name="TimeLeft" type="Label" parent="Content/TopInfo/TimeLeftContainer" unique_id=69651017]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.2745435, 0.36139283, 0.7681424, 1)
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_evjer")
+text = " 1D 21H"
+
+[node name="Body" type="PanelContainer" parent="Content" unique_id=1289619123]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_83fg3")
+
+[node name="Content" type="VBoxContainer" parent="Content/Body" unique_id=2050675644]
+layout_mode = 2
+
+[node name="Resourse" type="HBoxContainer" parent="Content/Body/Content" unique_id=1013078778]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Prefix" type="Label" parent="Content/Body/Content/Resourse" unique_id=15216010]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.71644646, 0.7551275, 0.7845762, 1)
+theme_override_fonts/font = ExtResource("4_flv6s")
+theme_override_font_sizes/font_size = 19
+text = "REQUIRED ITEM"
+
+[node name="Item" type="Label" parent="Content/Body/Content/Resourse" unique_id=769643982]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745106, 0.89969504, 0.9308375, 1)
+theme_override_fonts/font = ExtResource("4_flv6s")
+theme_override_font_sizes/font_size = 21
+text = "Iron_Horible"
+
+[node name="Count" type="HBoxContainer" parent="Content/Body/Content" unique_id=1820466550]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Prefix" type="Label" parent="Content/Body/Content/Count" unique_id=1780469145]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.71644646, 0.7551275, 0.7845762, 1)
+theme_override_fonts/font = ExtResource("4_flv6s")
+theme_override_font_sizes/font_size = 19
+text = "REQUIRED COUNT"
+
+[node name="Item" type="Label" parent="Content/Body/Content/Count" unique_id=940135808]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745106, 0.89969504, 0.9308375, 1)
+theme_override_fonts/font = ExtResource("4_flv6s")
+theme_override_font_sizes/font_size = 21
+text = "5000"
+
+[node name="Tax_Optional" type="HBoxContainer" parent="Content/Body/Content" unique_id=1056792721]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Prefix" type="Label" parent="Content/Body/Content/Tax_Optional" unique_id=503576423]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.71644646, 0.7551275, 0.7845762, 1)
+theme_override_fonts/font = ExtResource("4_flv6s")
+theme_override_font_sizes/font_size = 19
+text = "TAX PERCENT"
+
+[node name="Item" type="Label" parent="Content/Body/Content/Tax_Optional" unique_id=1629742675]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745106, 0.89969504, 0.9308375, 1)
+theme_override_fonts/font = ExtResource("4_flv6s")
+theme_override_font_sizes/font_size = 21
+text = "2.5%"
+
+[node name="Cost" type="HBoxContainer" parent="Content/Body/Content" unique_id=637903539]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Prefix" type="Label" parent="Content/Body/Content/Cost" unique_id=1570391495]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7803763, 0.7015382, 0.4156684, 1)
+theme_override_fonts/font = ExtResource("4_flv6s")
+theme_override_font_sizes/font_size = 19
+text = "COST PER UNIT"
+
+[node name="Item" type="Label" parent="Content/Body/Content/Cost" unique_id=304865251]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745106, 0.89969504, 0.9308375, 1)
+theme_override_fonts/font = ExtResource("4_flv6s")
+theme_override_font_sizes/font_size = 21
+text = "SILVER"
+
+[node name="PPLimit_Optional" type="HBoxContainer" parent="Content/Body/Content" unique_id=1934662649]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Prefix" type="Label" parent="Content/Body/Content/PPLimit_Optional" unique_id=1009960473]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.71644646, 0.7551275, 0.7845762, 1)
+theme_override_fonts/font = ExtResource("4_flv6s")
+theme_override_font_sizes/font_size = 19
+text = "PLAYER LIMIT"
+
+[node name="Item" type="Label" parent="Content/Body/Content/PPLimit_Optional" unique_id=2035761579]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8745106, 0.89969504, 0.9308375, 1)
+theme_override_fonts/font = ExtResource("4_flv6s")
+theme_override_font_sizes/font_size = 21
+text = "150"
+
+[node name="Image" type="TextureRect" parent="Content/Body/Content" unique_id=477526187]
+custom_minimum_size = Vector2(156, 156)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_wv8ao")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="Content/Body/Content" unique_id=1751720717]
+custom_minimum_size = Vector2(130, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_flv6s")
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxFlat_6u82b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_flv6s")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wv8ao")
+text = "Deliver"
+
+[node name="Description" type="Label" parent="Content" unique_id=875541981]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.54681265, 0.5585815, 0.67276603, 1)
+theme_override_font_sizes/font_size = 11
+text = "The state is prepared to purchase the necessary resources at an inflated price."

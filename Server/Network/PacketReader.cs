@@ -54,6 +54,7 @@ public class PacketReader
             case PacketTypes.C2S_AdminConsoleCommand:
             case PacketTypes.C2S_TreasuryAction:
             case PacketTypes.C2S_RoyalContractCreateRequest:
+            case PacketTypes.C2S_RoyalContractInfoRequest:
                 _worldApi?.EnqueueCommand(new NetworkCommand
                 {
                     Session = session,

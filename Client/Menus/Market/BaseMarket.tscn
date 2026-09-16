@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c4khyov2ay7x8"]
 
 [ext_resource type="Script" uid="uid://cr2asmjhvlmsl" path="res://Menus/Market/PanelsController.cs" id="1_32t48"]
-[ext_resource type="Texture2D" uid="uid://bkho5n2sh1w4s" path="res://Assets/temp/thedigitalartist-approved-5254258_640.png" id="1_cvoin"]
 [ext_resource type="Script" uid="uid://cax2sne2key80" path="res://Menus/Market/MarketWindow.cs" id="1_nvxjk"]
 [ext_resource type="Script" uid="uid://chcy8745e6njm" path="res://Menus/Market/FadePanel.cs" id="2_0h5cj"]
 [ext_resource type="PackedScene" uid="uid://bb6skeww6pvx7" path="res://Menus/Market/Guildhall/guildhall.tscn" id="2_etg18"]
 [ext_resource type="PackedScene" uid="uid://d2dmonvo31mp" path="res://Menus/Market/Components/ItemCard.tscn" id="3_tub62"]
+[ext_resource type="PackedScene" uid="uid://cole6a25or3m7" path="res://Menus/Market/EcomomyTab/RoyalContract/RoyalControlPanel.tscn" id="5_nvxjk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5crc"]
 bg_color = Color(0.54645705, 0.030505534, 0.07627382, 1)
@@ -184,32 +184,7 @@ color = Color(0.54509807, 0.03137255, 0.07450981, 1)
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_cvoin"]
 color = Color(0.47034925, 0.45241696, 0.45294434, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jui1a"]
-bg_color = Color(0.16094226, 0.16618353, 0.2226842, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.7360655, 0.694513, 0.6110566, 1)
-border_blend = true
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evjer"]
-content_margin_left = 5.0
-content_margin_top = 2.0
-content_margin_right = 5.0
-content_margin_bottom = 2.0
-bg_color = Color(0.124131836, 0.1273948, 0.17651409, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7de4"]
-content_margin_left = 10.0
-content_margin_top = 4.0
-content_margin_right = 10.0
-content_margin_bottom = 4.0
-bg_color = Color(0.18310183, 0.20869619, 0.33469316, 1)
-border_blend = true
-shadow_size = 1
-
-[node name="Control" type="Control" unique_id=853745610 node_paths=PackedStringArray("_itemList")]
+[node name="Control" type="Control" unique_id=853745610 node_paths=PackedStringArray("_itemList", "_royalContractTab")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,6 +194,7 @@ grow_vertical = 2
 script = ExtResource("1_nvxjk")
 _itemList = NodePath("PanelContainer/Border/Panels/TabContainer/Items/ItemList")
 _item = ExtResource("3_tub62")
+_royalContractTab = NodePath("PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content/RoyalContract")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1227776599]
 layout_mode = 1
@@ -416,11 +392,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rrpnf")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_432cn")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_yxb6s")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_3u3lp")
-current_tab = 0
+current_tab = 1
 tab_0/title = "MARKET"
 tab_1/title = "ECONOMY"
 
 [node name="Items" type="PanelContainer" parent="PanelContainer/Border/Panels/TabContainer" unique_id=268754156]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 metadata/_tab_name = "MARKET"
@@ -431,7 +408,6 @@ size_flags_vertical = 0
 theme_override_constants/separation = 1
 
 [node name="Taxes & Stats" type="PanelContainer" parent="PanelContainer/Border/Panels/TabContainer" unique_id=285235417]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 metadata/_tab_name = "ECONOMY"
@@ -445,62 +421,53 @@ theme_override_constants/margin_top = 10
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="ContentVBox" type="VBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer" unique_id=1263733952]
+[node name="Content" type="HBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer" unique_id=1212575031]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+theme_override_constants/separation = 100
 
-[node name="Widgets" type="VBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox" unique_id=1146399435]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="TaxAndRoyal" type="HBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets" unique_id=1739548429]
-layout_mode = 2
-theme_override_constants/separation = 50
-
-[node name="WidgetSaleTax" type="PanelContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal" unique_id=1553251154]
+[node name="WidgetSaleTax" type="PanelContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content" unique_id=1553251154]
 custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_rseby")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/WidgetSaleTax" unique_id=187162915]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content/WidgetSaleTax" unique_id=187162915]
 layout_mode = 2
 
-[node name="Name" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/WidgetSaleTax/VBoxContainer" unique_id=1082259471]
+[node name="Name" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content/WidgetSaleTax/VBoxContainer" unique_id=1082259471]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 21
 text = "SALE TAX CHANGE"
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/WidgetSaleTax/VBoxContainer" unique_id=944571502]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content/WidgetSaleTax/VBoxContainer" unique_id=944571502]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_jui1a")
 
-[node name="nearestTaxchange" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/WidgetSaleTax/VBoxContainer" unique_id=781520381]
+[node name="nearestTaxchange" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content/WidgetSaleTax/VBoxContainer" unique_id=781520381]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.37809944, 0.6471398, 0.29917192, 1)
 text = "▼ (-1.5%)"
 
-[node name="CurTax" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/WidgetSaleTax/VBoxContainer" unique_id=650836885]
+[node name="CurTax" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content/WidgetSaleTax/VBoxContainer" unique_id=650836885]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_colors/font_color = Color(0, 0.7830265, 0.23676112, 1)
 theme_override_font_sizes/font_size = 34
 text = "5%"
 
-[node name="NameCat" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/WidgetSaleTax/VBoxContainer" unique_id=1695676693]
+[node name="NameCat" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content/WidgetSaleTax/VBoxContainer" unique_id=1695676693]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 17
 text = "TAX HISTORY"
 
-[node name="HSeparator2" type="HSeparator" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/WidgetSaleTax/VBoxContainer" unique_id=470733855]
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content/WidgetSaleTax/VBoxContainer" unique_id=470733855]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_cvoin")
 
-[node name="TaxHistory" type="RichTextLabel" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/WidgetSaleTax/VBoxContainer" unique_id=65948300]
+[node name="TaxHistory" type="RichTextLabel" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content/WidgetSaleTax/VBoxContainer" unique_id=65948300]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.7708395, 0.77083945, 0.77083945, 1)
@@ -512,149 +479,8 @@ text = "[14.07] - 6.5%
 
 [14.07] - 6.5%"
 
-[node name="RoyalContract" type="PanelContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal" unique_id=1563223322]
-custom_minimum_size = Vector2(600, 300)
+[node name="RoyalContract" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/Content" unique_id=936619024 instance=ExtResource("5_nvxjk")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jui1a")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract" unique_id=466569781]
-layout_mode = 2
-
-[node name="CategName" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer" unique_id=1538576974]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.88225347, 0.7205288, 0, 1)
-theme_override_font_sizes/font_size = 21
-text = "ROYAL CONTRACT"
-
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer" unique_id=978104545]
-layout_mode = 2
-
-[node name="TopInfo" type="HBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer" unique_id=669986467]
-layout_mode = 2
-
-[node name="OrderDescriptionText" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/TopInfo" unique_id=482036136]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_colors/font_color = Color(0.8839559, 0.92342895, 0.9250467, 1)
-text = "ORDER DESCRIPTION:"
-
-[node name="TimeLeftContainer" type="HBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/TopInfo" unique_id=1927855037]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_constants/separation = 0
-alignment = 2
-
-[node name="Prefix" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/TopInfo/TimeLeftContainer" unique_id=420349412]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_colors/font_color = Color(0.7745325, 0.0679137, 0.12552074, 1)
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_evjer")
-text = "TIME LEFT:"
-
-[node name="TimeLeft" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/TopInfo/TimeLeftContainer" unique_id=1612374004]
-layout_mode = 2
-size_flags_horizontal = 10
-theme_override_colors/font_color = Color(0.7745325, 0.0679137, 0.12552074, 1)
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_evjer")
-text = " 1D 21H"
-
-[node name="CurrentProgress" type="HBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer" unique_id=821812998]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress" unique_id=1427004704]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_a7de4")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer" unique_id=1466798244]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Order" type="VBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer" unique_id=921675926]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Name" type="HBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Order" unique_id=939692305]
-layout_mode = 2
-
-[node name="ResourseName" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Order/Name" unique_id=1826237880]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 17
-text = "Ordered resource:"
-
-[node name="Name" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Order/Name" unique_id=315254091]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.8217887, 0.82178867, 0.82178867, 1)
-theme_override_font_sizes/font_size = 17
-text = "CLEAR IRON"
-
-[node name="Count" type="HBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Order" unique_id=333664087]
-layout_mode = 2
-
-[node name="ResCount" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Order/Count" unique_id=1283694942]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 17
-text = "Count:"
-
-[node name="Count" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Order/Count" unique_id=1336528564]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.80358773, 0.71346647, 0.13118854, 1)
-theme_override_font_sizes/font_size = 17
-text = "10.000"
-
-[node name="Markup" type="HBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Order" unique_id=1230467039]
-layout_mode = 2
-
-[node name="ResMarkup" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Order/Markup" unique_id=239780644]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 17
-text = "Markup:"
-
-[node name="Markup" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Order/Markup" unique_id=1770017853]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.04059028, 0.593855, 1.1551381e-06, 1)
-theme_override_font_sizes/font_size = 17
-text = "▲ 13% "
-
-[node name="Progress" type="VBoxContainer" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer" unique_id=682614201]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TaxFree" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Progress" unique_id=1128347408]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0, 0.48508, 0.3022758, 1)
-theme_override_font_sizes/font_size = 28
-text = "TAX FREE (0%)"
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer/CurrentProgress/PanelContainer/HBoxContainer/Progress" unique_id=649002624]
-custom_minimum_size = Vector2(129, 128)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_cvoin")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Description" type="Label" parent="PanelContainer/Border/Panels/TabContainer/Taxes & Stats/Borders/ScrollContainer/ContentVBox/Widgets/TaxAndRoyal/RoyalContract/VBoxContainer" unique_id=1843541198]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.54681265, 0.5585815, 0.67276603, 1)
-theme_override_font_sizes/font_size = 11
-text = "The state is prepared to purchase the necessary resources at an inflated price."
 
 [node name="GUILDHALL" parent="PanelContainer/Border/Panels/TabContainer" unique_id=1800120852 instance=ExtResource("2_etg18")]
 visible = false

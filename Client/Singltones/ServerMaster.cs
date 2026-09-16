@@ -7,6 +7,7 @@ using Shared.Udp.Packets.Category;
 using Shared.Udp.Packets.Category.Game;
 using Shared.Udp.Packets.Category.Game.Ability;
 using Shared.Udp.Packets.Category.Game.Projectile;
+using Shared.Udp.Packets.Category.Market;
 using Shared.Udp.Packets.Category.MasteryTree;
 using Shared.Udp.Packets.Category.Settlement;
 using System;
@@ -290,6 +291,11 @@ public partial class ServerMaster : Node
 					SceneManager.Instance.SettlementManageWindow.Treasure_HistoryUpdate(tUpdH);
 				}
 			break;
+			case S2C_RoyalContractInfoResponsePacket royalPacket:
+				{
+					SceneManager.Instance.MarketManagerWindow.LoadRoyalContractInfo(royalPacket);
+				}
+			break;
 
 		}
 
@@ -380,6 +386,15 @@ public partial class ServerMaster : Node
 		
 		Span<byte> buffer = stackalloc byte[128];
 		int length = PacketSerialier.Serialize<C2S_RoyalContractCreateRequestPacket>(buffer, PacketTypes.C2S_RoyalContractCreateRequest, packet);
+		_socket.Send(buffer[..length]);
+
+	}
+
+	public void Market_LoadlContractRequest(C2S_RoyalContractInfoRequestPacket packet)
+	{
+		
+		Span<byte> buffer = stackalloc byte[64];
+		int length = PacketSerialier.Serialize<C2S_RoyalContractInfoRequestPacket>(buffer, PacketTypes.C2S_RoyalContractInfoRequest, packet);
 		_socket.Send(buffer[..length]);
 
 	}

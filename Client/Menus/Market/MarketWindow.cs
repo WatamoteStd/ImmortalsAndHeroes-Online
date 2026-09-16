@@ -1,6 +1,7 @@
 using Godot;
 using Shared.DataTransferObjects.Market;
 using Shared.Items;
+using Shared.Udp.Packets.Category.Market;
 using System;
 using System.Collections.Generic;
 
@@ -9,7 +10,9 @@ public partial class MarketWindow : Control
 	
 	[Export] private VBoxContainer _itemList;
 	[Export] private PackedScene _item;
+	[Export] private RoyalContract _royalContractTab;
 	private List<ItemCard> _createdCards = new();
+
 
 	public void MARKET_AddItem(MarketItemDto dto)
 	{
@@ -32,6 +35,11 @@ public partial class MarketWindow : Control
 
 		}
 
+	}
+
+	public void LoadRoyalContractInfo(S2C_RoyalContractInfoResponsePacket packet)
+	{
+		_royalContractTab.Init(packet);
 	}
 
 }

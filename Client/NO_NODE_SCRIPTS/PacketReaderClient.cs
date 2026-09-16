@@ -12,6 +12,7 @@ using Shared.Udp.Packets.Category;
 using Shared.Udp.Packets.Category.Game;
 using Shared.Udp.Packets.Category.Game.Ability;
 using Shared.Udp.Packets.Category.Game.Projectile;
+using Shared.Udp.Packets.Category.Market;
 using Shared.Udp.Packets.Category.MasteryTree;
 using Shared.Udp.Packets.Category.Settlement;
 
@@ -229,6 +230,12 @@ public class PacketReaderClient
                     case PacketTypes.S2C_TreasureHistoryUpdate:
                         {
                             var packet = PacketSerialier.Deserialize<S2C_TreasureHistoryUpdatePacket>(payload);
+                            _networkPackets.Enqueue(packet);
+                        }
+                    break;
+                    case PacketTypes.S2C_RoyalContractInfoResponse:
+                        {
+                            var packet = PacketSerialier.Deserialize<S2C_RoyalContractInfoResponsePacket>(payload);
                             _networkPackets.Enqueue(packet);
                         }
                     break;

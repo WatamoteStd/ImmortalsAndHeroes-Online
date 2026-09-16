@@ -1,6 +1,8 @@
 using Server.World.Zone.Settlement.Options;
 using Shared.Udp.Packets.Category.Settlement;
 using Server.World.Zone.Settlement.Components;
+using Shared.Udp.Packets.Category.Market;
+using Server.Network;
 
 namespace Server.World.Zone.Settlement;
 
@@ -59,5 +61,33 @@ public class CitySettlement : BaseSettlement
 
     }
 
+
+    public void GetRoyalContractInfo(uint userId) // USER ID NOT PLAYER (!ENTITY ID) 
+    {
+
+        var packet = new S2C_RoyalContractInfoResponsePacket
+        {
+            ItemId = Shared.Items.ItemType.None,
+            PricePerUnit = 0,
+            TaxPercent = 0f,
+            Count = 0,
+            PerPlayerLimitCount = 0
+        };
+        
+        if (royalContract != null && !royalContract.IsCompleted)
+        {
+            
+            packet.ItemId = royalContract.ItemId;
+            packet.PricePerUnit = royalContract.PricePerUnit;
+            packet.TaxPercent = royalContract.TaxPercent;
+            packet.Count = (royalContract.TotalCount - royalContract.DeliveredCount);
+            packet.PerPlayerLimitCount = royalContract.PerPlayerLimitCount;
+
+        }
+
+        OnRoyalContractResponseHandler(packet, userId);
+        
+
+    }
 
 }

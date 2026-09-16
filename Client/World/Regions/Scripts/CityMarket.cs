@@ -1,5 +1,6 @@
 using Godot;
 using Shared.DataTransferObjects.Market;
+using Shared.Udp.Packets.Category.Market;
 using System;
 using System.Collections.Generic;
 
@@ -38,6 +39,9 @@ public partial class CityMarket : Area3D
 				}
 
 			}
+
+			var packet = new C2S_RoyalContractInfoRequestPacket{};
+			ServerMaster.Instance.Market_LoadlContractRequest(packet);
 
 		}
 

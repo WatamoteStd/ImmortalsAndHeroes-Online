@@ -17,6 +17,7 @@ using Shared.Udp.Packets.Category.Game.Ability;
 using Shared.Zone;
 using Server.World.Zone.Settlement;
 using Shared.Udp.Packets.Category.Settlement;
+using Shared.Udp.Packets.Category.Market;
 
 namespace Server.World.Zone;
 
@@ -55,6 +56,10 @@ public class WorldHolder : IWorldHolder
                 Broadcaster.SendToPlayer<S2C_TreasureUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureUpdate, packet);
                 Broadcaster.SendToPlayer<S2C_TreasureHistoryUpdatePacket>(player.PlayerId, PacketTypes.S2C_TreasureHistoryUpdate, hisPacket);
             }
+        };
+        hiacher.OnRoyalContractInfoResponse += (packet, id) =>
+        {
+            Broadcaster.SendToPlayer<S2C_RoyalContractInfoResponsePacket>(id, PacketTypes.S2C_RoyalContractInfoResponse, packet);  
         };
         VillageSettlement cesi = new VillageSettlement(3, "Cesi", hiacher);
 
@@ -234,6 +239,31 @@ public class WorldHolder : IWorldHolder
 
                         ArrayPool<byte>.Shared.Return(cmd.Data);
                     }
+                break;
+
+                case PacketTypes.C2S_RoyalContractInfoRequest:
+                    {
+                        try
+                        {
+                            
+                            if (idToPlayer.TryGetValue(cmd.Session.UserId, out var player) && idToZone.TryGetValue(player.RegionId, out var zone))
+                            {
+                            
+                                if (zone.Settlement is CitySettlement citySettlement)
+                                {
+                                    citySettlement.GetRoyalContractInfo(player.PlayerId);
+                                }
+
+                            }
+
+                        }
+                        finally
+                        {
+                            ArrayPool<byte>.Shared.Return(cmd.Data);
+                        }
+                        
+                    }
+                    
                 break;
 
             }
